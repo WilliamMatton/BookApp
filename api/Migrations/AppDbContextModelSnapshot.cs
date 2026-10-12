@@ -20,6 +20,53 @@ namespace Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Api.Models.Book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("YearPublished")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Author = "F. Scott Fitzgerald",
+                            Title = "The Great Gatsby",
+                            YearPublished = 1925
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Author = "Harper Lee",
+                            Title = "To Kill a Mockingbird",
+                            YearPublished = 1960
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Author = "George Orwell",
+                            Title = "1984",
+                            YearPublished = 1949
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }
