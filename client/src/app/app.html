@@ -232,6 +232,21 @@
       </svg>
       <h1>Hello, {{ title() }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
+      <section class="mt-4" aria-live="polite">
+        <h2 class="h5">Weather API check</h2>
+        @if (loading()) {
+          <p>Loading forecast from the API...</p>
+        } @else if (error()) {
+          <p class="text-danger">API request failed: {{ error() }}</p>
+        } @else {
+          <p class="text-success">API connected. Received {{ forecasts().length }} forecast(s).</p>
+          <ul class="list-unstyled">
+            @for (forecast of forecasts(); track forecast.date) {
+              <li>{{ forecast.date }}: {{ forecast.temperatureC }} °C, {{ forecast.summary }}</li>
+            }
+          </ul>
+        }
+      </section>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
