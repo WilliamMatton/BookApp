@@ -43,29 +43,6 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Books");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Author = "F. Scott Fitzgerald",
-                            Title = "The Great Gatsby",
-                            YearPublished = 1925
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Author = "Harper Lee",
-                            Title = "To Kill a Mockingbird",
-                            YearPublished = 1960
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Author = "George Orwell",
-                            Title = "1984",
-                            YearPublished = 1949
-                        });
                 });
 #pragma warning restore 612, 618
         }
