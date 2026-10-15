@@ -8,7 +8,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     <header>
       <nav class="navbar navbar-expand-lg border-bottom">
         <div class="container pt-2 pb-2">
-          <a class="navbar-brand fw-semibold" routerLink="/">Leafmark</a>
+          <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" routerLink="/">
+            <div class="text-light bg-primary fs-6 rounded-3 logo-icon">
+              <i class="fa-solid fa-book align-middle"></i>
+            </div>
+            Leafmark
+          </a>
           <ul class="navbar-nav mb-2 mb-lg-0 nav-pills global-app-nav">
             <li class="nav-item ms-1 me-1">
               <a
