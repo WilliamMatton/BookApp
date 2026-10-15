@@ -50,11 +50,26 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 $font-sizes: map-merge($font-sizes, (
   7: 0.875rem,
-  8: 0.75rem
+  8: 0.75rem,
+  9: 0.6rem,
+  10: 0.5rem
 ));
 
 @import 'bootstrap/scss/maps';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
+
+$utilities: map-merge($utilities, (
+  "letter-spacing": (
+    property: letter-spacing,
+    class: ls,
+    values: (
+      tight: -0.02em,
+      normal: normal,
+      wide: 0.07em,
+      wider: 0.13em
+    )
+  )
+));
 
 @import 'bootstrap/scss/bootstrap';
