@@ -1,12 +1,17 @@
 import { Component, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { Header } from './header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [Header, RouterModule],
   template: `
-    <h1>Hello World</h1>
+    <app-header></app-header>
+    <main class="container">
+      <router-outlet></router-outlet>
+    </main>
   `,
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('client');
