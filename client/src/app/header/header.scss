@@ -2,6 +2,12 @@
   padding: 6px 8px;
 }
 
+.global-app-nav {
+  @media (max-width: 768px) {
+    background-color: white;
+  }
+}
+
 .nav-link:not(.active):hover {
   background-color:var(--bs-border-color);
 }
