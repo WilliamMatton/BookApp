@@ -21,23 +21,25 @@ Content-Type: application/json
 {
     "title": "Moby-Dick",
     "author": "Herman Melville",
-    "yearPublished": 1851
+    "yearPublished": 1851,
+    "status": "Reading"
 }
 
 ###
 
-PUT {{rootURL}}/api/books/4
+PUT {{rootURL}}/api/books/8
 Content-Type: application/json
 
 {
-    "id": 4,
+    "id": 8,
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
-    "yearPublished": 1813
+    "yearPublished": 1813,
+    "status": "Read"
 }
 
 ###
 
-DELETE {{rootURL}}/api/books/4
+DELETE {{rootURL}}/api/books/9
 
 ###
