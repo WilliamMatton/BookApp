@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
@@ -15,7 +16,8 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
