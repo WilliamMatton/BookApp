@@ -47,6 +47,7 @@ public class BooksController(AppDbContext context) : ControllerBase
         book.Title = updatedBook.Title;
         book.Author = updatedBook.Author;
         book.YearPublished = updatedBook.YearPublished;
+        book.Status = updatedBook.Status;
 
         await _context.SaveChangesAsync();
         return NoContent();
