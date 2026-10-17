@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Book, ReadingStatus } from '../book';
+import { DeleteBookModal } from '../delete-book-modal/delete-book-modal';
 
 @Component({
   selector: 'app-book-entry',
@@ -26,10 +28,10 @@ import { Book, ReadingStatus } from '../book';
           <span class="fs-7 text-secondary">{{book.yearPublished}}</span>
         </div>
         <div class="col-12 col-sm-3 col-md-2 col-lg-2 d-flex align-items-center justify-content-sm-center gap-2">
-          <button type="button" class="btn border rounded-3 fs-7 opacity-75 action-button">
+          <button type="button" class="btn border rounded-3 fs-7 opacity-75 update-book-button">
             <i class="fa-solid fa-pencil align-middle"></i>
           </button>
-          <button type="button" class="btn border rounded-3 fs-7 opacity-75 action-button">
+          <button type="button" class="btn border rounded-3 fs-7 opacity-75 delete-book-button" (click)="openModal()">
             <i class="fa-solid fa-trash align-middle"></i>
           </button>
         </div>
@@ -40,10 +42,22 @@ import { Book, ReadingStatus } from '../book';
 })
 export class BookEntry {
   @Input() book!: Book;
+  @Output() deleteRequested = new EventEmitter<number>();
 
   readonly statusClasses: Record<ReadingStatus, string> = {
     Reading: 'text-reading bg-reading',
     Read: 'text-read bg-read',
     ToRead: 'text-to-read bg-to-read',
   };
+
+  private modalService = inject(NgbModal);
+
+  openModal(): void {
+    const modalRef = this.modalService.open(DeleteBookModal);
+    modalRef.componentInstance.book = this.book;
+
+    modalRef.closed.subscribe(() => {
+      this.deleteRequested.emit(this.book.id);
+    });
+  }
 }

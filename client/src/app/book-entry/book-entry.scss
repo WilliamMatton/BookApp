@@ -1,3 +1,11 @@
-.action-button {
+.update-book-button {
   padding: 8px 10px;
+  --bs-btn-hover-border-color: var(--bs-success);
+  --bs-btn-hover-color: var(--bs-success);
+}
+
+.delete-book-button {
+  padding: 8px 10px;
+  --bs-btn-hover-border-color: var(--bs-danger);
+  --bs-btn-hover-color: var(--bs-danger);
 }
