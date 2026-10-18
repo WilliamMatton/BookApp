@@ -93,7 +93,7 @@ export class UpdateBook {
         }
 
         const serverMsg = typeof error.error === 'string' ? error.error : error.error?.title;
-        this.errorMsg = serverMsg ?? 'Failed to add book. Please try again.';
+        this.errorMsg = serverMsg ?? 'Failed to update book. Please try again.';
       },
     });
   }
