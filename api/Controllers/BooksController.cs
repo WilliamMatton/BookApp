@@ -1,5 +1,6 @@
 using Api.Data;
 using Api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +27,7 @@ public class BooksController(AppDbContext context) : ControllerBase
         return Ok(book);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Book>> AddBook(Book newBook)
     {
@@ -36,6 +38,7 @@ public class BooksController(AppDbContext context) : ControllerBase
         return CreatedAtAction(nameof(GetBookById), new { id = newBook.Id }, newBook);
     }
 
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateBook(int id, Book updatedBook)
     {
@@ -52,6 +55,7 @@ public class BooksController(AppDbContext context) : ControllerBase
         return NoContent();
     }
 
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBook(int id)
     {
