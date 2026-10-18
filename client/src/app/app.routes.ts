@@ -22,6 +22,11 @@ export const routes: Routes = [
     title: 'Add Book',
   },
   {
+    path: 'update/:id',
+    component: UpdateBook,
+    title: 'Update Book',
+  },
+  {
     path: 'not-found',
     component: PageNotFound,
     title: 'Page Not Found',

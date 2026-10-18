@@ -21,7 +21,7 @@ type BookListState =
       @switch (state.status) {
         @case ('loading') {
           <div class="container d-flex align-items-center justify-content-center">
-            <span>Loading content...</span>
+            <span>Loading library...</span>
           </div>
         }
         @case ('error') {

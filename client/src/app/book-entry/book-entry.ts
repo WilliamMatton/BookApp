@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Book, ReadingStatus } from '../book';
 import { DeleteBookModal } from '../delete-book-modal/delete-book-modal';
 
 @Component({
   selector: 'app-book-entry',
-  imports: [NgClass],
+  imports: [NgClass, RouterLink],
   template: `
     <div class="container p-0">
       <div class="row row-gap-3 pt-3 pb-3 p-lg-3">
@@ -28,10 +29,19 @@ import { DeleteBookModal } from '../delete-book-modal/delete-book-modal';
           <span class="fs-7 text-secondary">{{book.yearPublished}}</span>
         </div>
         <div class="col-12 col-sm-3 col-md-2 col-lg-2 d-flex align-items-center justify-content-sm-center gap-2">
-          <button type="button" class="btn border rounded-3 fs-7 opacity-75 update-book-button">
+          <a
+            class="btn border rounded-3 fs-7 opacity-75 update-book-button"
+            [routerLink]="['/update', book.id]"
+            aria-label="Edit book"
+          >
             <i class="fa-solid fa-pencil align-middle"></i>
-          </button>
-          <button type="button" class="btn border rounded-3 fs-7 opacity-75 delete-book-button" (click)="openModal()">
+          </a>
+          <button
+            type="button"
+            class="btn border rounded-3 fs-7 opacity-75 delete-book-button"
+            aria-label="Delete book"
+            (click)="openModal()"
+          >
             <i class="fa-solid fa-trash align-middle"></i>
           </button>
         </div>

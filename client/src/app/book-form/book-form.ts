@@ -1,7 +1,7 @@
 import { Component, input, output, inject, effect } from '@angular/core';
 import { FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { NewBook, READING_STATUSES } from '../book';
+import { Book, NewBook, READING_STATUSES, ReadingStatus } from '../book';
 
 @Component({
   selector: 'app-book-form',
@@ -102,7 +102,7 @@ import { NewBook, READING_STATUSES } from '../book';
   styleUrl: './book-form.scss',
 })
 export class BookForm {
-  initialValue = input<{ title: string; author: string; year: null; status: "ToRead"; } | null>(null);
+  initialValue = input<Pick<Book, 'title' | 'author' | 'yearPublished' | 'status'> | null>(null);
   submitLabel = input('Add book');
   errorMessage = input('');
 
@@ -118,10 +118,10 @@ export class BookForm {
         Validators.max(2099),
       ],
     }),
-    status: [
-      READING_STATUSES[0],
-      Validators.required
-    ],
+    status: new FormControl<ReadingStatus>(READING_STATUSES[0], {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
   });
 
   constructor() {
