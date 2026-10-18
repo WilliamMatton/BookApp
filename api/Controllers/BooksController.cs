@@ -43,7 +43,6 @@ public class BooksController(AppDbContext context) : ControllerBase
         if (book == null)
             return NotFound();
 
-        book.Id = updatedBook.Id;
         book.Title = updatedBook.Title;
         book.Author = updatedBook.Author;
         book.YearPublished = updatedBook.YearPublished;

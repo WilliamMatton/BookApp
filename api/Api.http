@@ -27,11 +27,10 @@ Content-Type: application/json
 
 ###
 
-PUT {{rootURL}}/api/books/8
+PUT {{rootURL}}/api/books/15
 Content-Type: application/json
 
 {
-    "id": 8,
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
     "yearPublished": 1813,
