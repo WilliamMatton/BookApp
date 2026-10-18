@@ -4,6 +4,7 @@ import { Quotes } from './quotes/quotes';
 import { AddBook } from './add-book/add-book';
 import { UpdateBook } from './update-book/update-book';
 import { PageNotFound } from './page-not-found/page-not-found';
+import { Login } from './login/login';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,11 @@ export const routes: Routes = [
     path: 'update/:id',
     component: UpdateBook,
     title: 'Update Book',
+  },
+  {
+    path: 'login',
+    component: Login,
+    title: 'Sign In',
   },
   {
     path: 'not-found',
