@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Auth } from '../auth';
 
 @Component({
   selector: 'app-header',
@@ -39,6 +40,23 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                 >Quotes</a>
               </li>
             </ul>
+            @if(auth.isAuthenticated()) {
+              <button
+                type="button"
+                class="btn btn-link"
+                (click)="logout()"
+              >
+                Log out
+              </button>
+            } @else {
+              <a
+                class="btn btn-link"
+                routerLink="/login"
+                (click)="isMenuCollapsed.set(true)"
+              >
+                Log in
+              </a>
+            }
           </div>
         </div>
       </nav>
@@ -47,5 +65,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
+  auth = inject(Auth);
+
   readonly isMenuCollapsed = signal(true);
+
+  logout() {
+    this.isMenuCollapsed.set(true);
+    this.auth.deleteSession();
+  }
 }
