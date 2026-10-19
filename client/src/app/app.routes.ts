@@ -20,12 +20,12 @@ export const routes: Routes = [
     title: 'Quotes',
   },
   {
-    path: 'add-book',
+    path: 'books/add',
     component: AddBook,
     title: 'Add Book',
   },
   {
-    path: 'update/:id',
+    path: 'books/update/:id',
     component: UpdateBook,
     title: 'Update Book',
   },
@@ -40,7 +40,7 @@ export const routes: Routes = [
     title: 'Sign In',
   },
   {
-    path: 'add-quote',
+    path: 'quotes/add',
     component: AddQuote,
     title: 'Add Quote',
   },

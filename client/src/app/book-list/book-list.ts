@@ -57,7 +57,7 @@ type BookListState =
               <span class="fs-2"><i class="fa-solid fa-book align-middle"></i></span>
               <p class="p-0 m-0 fs-5 fw-semibold text-center">Your shelf is empty</p>
               <p class="p-0 m-0 text-secondary text-center">Add your first book to start your collection</p>
-              <a class="btn btn-link fw-semibold fs-7 text-success" routerLink="add">Add a book</a>
+              <a class="btn btn-link fw-semibold fs-7 text-success" routerLink="/books/add">Add a book</a>
             </div>
           }
           <div class="row">

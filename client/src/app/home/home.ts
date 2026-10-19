@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
           <span class="text-secondary fs-6">Keep track of your personal collection of books</span>
         </div>
         <div class="col-12 col-sm-4 col-md-3 col-xl-2 d-flex align-items-end justify-content-end">
-          <a class="btn btn-primary fw-medium fs-7 pt-2 ps-3 mt-2 pe-3 rounded-3 w-100" routerLink="/add-book">
+          <a class="btn btn-primary fw-medium fs-7 pt-2 ps-3 mt-2 pe-3 rounded-3 w-100" routerLink="/books/add">
             <span class="fs-8"><i class="fa-solid fa-plus"></i></span>
             Add new book
           </a>
