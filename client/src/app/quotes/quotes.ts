@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { QuoteList } from '../quote-list/quote-list';
 
 @Component({
   selector: 'app-quotes',
-  imports: [RouterLink],
+  imports: [RouterLink, QuoteList],
   template: `
     <div class="container p-0 mt-5">
       <div class="row">
@@ -20,7 +21,7 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
       <div class="row ps-0 pe-0 pt-4">
-        
+        <app-quote-list></app-quote-list>
       </div>
     </div>
   `,
