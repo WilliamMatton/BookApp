@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Library } from '../library';
 import { Quote } from '../quote';
 import { RouterLink } from '@angular/router';
+import { QuoteEntry } from '../quote-entry/quote-entry';
 
 type QuoteListState =
     { status: 'loading' }
@@ -15,7 +16,7 @@ type QuoteListState =
 
 @Component({
   selector: 'app-quote-list',
-  imports: [AsyncPipe, I18nPluralPipe, NgbAlertModule, RouterLink],
+  imports: [AsyncPipe, I18nPluralPipe, NgbAlertModule, RouterLink, QuoteEntry],
   template: `
     @if (quoteListState$ | async; as state) {
       @switch (state.status) {
@@ -33,28 +34,21 @@ type QuoteListState =
           @if(state.quotes.length > 0) {
             <div class="container bg-white rounded-4 border">
               <div class="row p-2 ps-lg-3 pe-lg-3 bg-light rounded-top-4 border-bottom d-none d-sm-flex align-items-center">
-                <div class="col-6 col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                <div class="col-6 col-sm-6 col-md-8">
                   <span class="text-secondary fs-8 fw-medium text-uppercase ls-wide">Quote</span>
                 </div>
-                <div class="col-6 col-sm-2 col-md-2 col-lg-1 col-xl-1 d-flex justify-content-center">
+                <div class="col-6 col-sm-3 col-md-2 d-flex justify-content-center">
                   <span class="text-secondary fs-8 fw-medium text-uppercase ls-wide">Source</span>
                 </div>
-                <div class="col-6 col-sm-2 col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center">
+                <div class="col-6 col-sm-3 col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center">
                   <span class="text-secondary fs-8 fw-medium text-uppercase ls-wide">Actions</span>
                 </div>
               </div>
-
-
-              <!--
               @for(quote of state.quotes; track quote.id; let last = $last) {
-                
                 <div class="row" [class.border-bottom]="!last">
-                  
                   <app-quote-entry [quote]="quote" (deleteRequested)="deleteQuote($event)"></app-quote-entry>
-                  
                 </div>
               }
-              -->
             </div>
           } @else {
             <div class="container ps-0 pe-0 pt-5 pb-5 d-flex flex-column align-items-center gap-3 bg-white rounded-4 border" style="--bs-border-style: dashed;">
