@@ -55,7 +55,7 @@ type QuoteListState =
               <span class="fs-2"><i class="fa-solid fa-book align-middle"></i></span>
               <p class="p-0 m-0 fs-5 fw-semibold text-center">No saved quotes</p>
               <p class="p-0 m-0 text-secondary text-center">Add your first quote to the list</p>
-              <a class="btn btn-link fw-semibold fs-7 text-success" routerLink="/add-quote">Add a quote</a>
+              <a class="btn btn-link fw-semibold fs-7 text-success" routerLink="/quotes/add">Add a quote</a>
             </div>
           }
           <div class="row">
