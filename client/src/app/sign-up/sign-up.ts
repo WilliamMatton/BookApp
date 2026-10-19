@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 import { AuthForm } from '../auth-form/auth-form';
 import { User } from '../user';
+import { Auth } from '../auth';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,11 +28,31 @@ import { User } from '../user';
   styleUrl: './sign-up.scss',
 })
 export class SignUp {
+  authService = inject(Auth);
+  router = inject(Router);
   errorMsg = '';
+
+  ngOnInit(): void {
+    const accessToken = localStorage.getItem('access-token');
+    if(accessToken) this.router.navigate(['/']);
+  }
 
   onSubmit(user: User) {
     this.errorMsg = '';
 
-    alert(`Signed up as ${user.email}`);
+    this.authService.register(user).subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: (error: HttpErrorResponse) => {
+        if(error.status === 0) {
+          this.errorMsg = 'Failed to connect to the server. Check your connection and try again.';
+          return;
+        }
+
+        const serverMsg = typeof error.error === 'string' ? error.error : error.error?.title;
+        this.errorMsg = serverMsg ?? 'Failed create account. Please try again.';
+      },
+    });
   }
 }
