@@ -1,10 +1,11 @@
 import { Component, input, output, inject } from '@angular/core';
-import { FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../user';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-auth-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   template: `
     <form
       [formGroup]="loginForm"
@@ -70,6 +71,13 @@ import { User } from '../user';
           <button type="submit" class="btn btn-primary">{{ submitLabel() }}</button>
         </div>
       </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col d-flex justify-content-center pt-3 pb-3">
+          <a class="text-center" [routerLink]="alternateActionRoute()">
+            {{ alternateActionText() }}
+          </a>
+        </div>
+      </div>
     </form>
   `,
   styleUrl: './auth-form.scss',
@@ -77,27 +85,23 @@ import { User } from '../user';
 export class AuthForm {
   submitLabel = input('Add book');
   errorMessage = input('');
+  alternateActionText = input('');
+  alternateActionRoute = input('');
 
   submitted = output<User>();
 
   loginForm = inject(FormBuilder).nonNullable.group({
-    email: ['', [
-      Validators.required,
-      Validators.email,
-    ]],
-    password: ['', [
-      Validators.required,
-      Validators.minLength(10),
-    ]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(10)]],
   });
 
   submit() {
     this.loginForm.markAllAsTouched();
-    if(this.loginForm.invalid) return;
+    if (this.loginForm.invalid) return;
 
     const { email, password } = this.loginForm.getRawValue();
 
-    if(this.loginForm.valid) this.submitted.emit({ email, password });
+    if (this.loginForm.valid) this.submitted.emit({ email, password });
   }
 
   get email() {

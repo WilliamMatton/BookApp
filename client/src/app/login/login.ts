@@ -10,15 +10,19 @@ import { Auth } from '../auth';
   imports: [AuthForm],
   template: `
     <div class="container p-0 mt-5">
-      <div class="row">
-        <span class="text-reading fw-semibold fs-8 text-uppercase ls-wider">Sign in</span>
-        <h1>Login</h1>
+      <div class="row d-flex justify-content-center">
+        <div class="col col-md-6 col-lg-4">
+          <span class="text-reading fw-semibold fs-8 text-uppercase ls-wider">Sign in</span>
+          <h1>Log in</h1>
+        </div>
       </div>
-      <div class="row">
-        <div class="col">
+      <div class="row d-flex justify-content-center">
+        <div class="col col-md-6 col-lg-4">
           <app-auth-form
             submitLabel="Log in"
             [errorMessage]="errorMsg"
+            alternateActionText="Don't have an account? Click here to create one!"
+            alternateActionRoute="/signup"
             (submitted)="onSubmit($event)"
           ></app-auth-form>
         </div>
