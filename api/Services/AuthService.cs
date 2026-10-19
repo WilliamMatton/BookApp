@@ -39,11 +39,11 @@ public class AuthService(AppDbContext context, IConfiguration configuration) : I
         };
     }
 
-    public async Task<User?> RegisterAsync(UserDto request)
+    public async Task<bool> RegisterAsync(UserDto request)
     {
         if(await context.Users.AnyAsync(e => e.Email == request.Email))
         {
-            return null;
+            return false;
         }
         
         var user = new User();
@@ -56,7 +56,7 @@ public class AuthService(AppDbContext context, IConfiguration configuration) : I
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        return user;
+        return true;
     }
 
     public async Task<TokenResponseDto?> RefreshTokensAsync(RefreshTokenRequestDto request)

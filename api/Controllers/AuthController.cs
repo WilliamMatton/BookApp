@@ -1,7 +1,5 @@
-using Api.Entities;
 using Api.Models;
 using Api.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -11,13 +9,13 @@ namespace Api.Controllers;
 public class AuthController(IAuthService authService) : ControllerBase
 {
     [HttpPost("register")]
-    public async Task<ActionResult<User>> Register(UserDto request)
+    public async Task<IActionResult> Register(UserDto request)
     {
-        var user = await authService.RegisterAsync(request);
-        if(user is null)
+        var registered = await authService.RegisterAsync(request);
+        if(!registered)
             return BadRequest("A user with this email already exists.");
 
-        return Ok(user);
+        return NoContent();
     }
 
     [HttpPost("login")]
