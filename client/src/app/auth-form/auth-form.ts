@@ -60,14 +60,14 @@ import { User } from '../user';
       </div>
       <div class="row">
         <div class="col-12 col-sm-6">
-          @if (errorMessage.length > 0) {
+          @if (errorMessage()) {
             <span class="text-danger text-break">{{ errorMessage() }}</span>
           }
         </div>
         <div
           class="col-12 col-sm-6 d-flex flex-column flex-sm-row align-items-sm-start justify-content-end gap-2 ps-3 pe-3"
         >
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary">{{ submitLabel() }}</button>
         </div>
       </div>
     </form>
