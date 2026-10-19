@@ -61,7 +61,7 @@ type BookListState =
             </div>
           }
           <div class="row">
-            <p class="text-secondary mt-3 fs-7">{{state.books.length | i18nPlural: bookCountMapping }} in your library</p>
+            <p class="text-secondary mt-3 fs-7">{{ state.books.length | i18nPlural: bookCountMapping }} in your library</p>
           </div>
           @if (alertMsg.length > 0) {
             <div class="row">
