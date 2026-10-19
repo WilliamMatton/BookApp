@@ -22,12 +22,21 @@ export class Auth {
   }
 
   createSession(tokenResponse: TokenResponse) {
+    localStorage.setItem('user-id', tokenResponse.userId);
     localStorage.setItem('access-token', tokenResponse.accessToken);
     localStorage.setItem('refresh-token', tokenResponse.refreshToken);
   }
 
   deleteSession() {
+    localStorage.removeItem('user-id');
     localStorage.removeItem('access-token');
     localStorage.removeItem('refresh-token');
+  }
+
+  refreshToken(userId: string, refreshToken: string): Observable<TokenResponse> {
+    return this.http.post<TokenResponse>(`${this.url}/Auth/refresh-token`, {
+      userId,
+      refreshToken,
+    });
   }
 }

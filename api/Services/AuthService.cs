@@ -34,6 +34,7 @@ public class AuthService(AppDbContext context, IConfiguration configuration) : I
     {
         return new TokenResponseDto
         {
+            UserId = user.Id,
             AccessToken = CreateToken(user),
             RefreshToken = await CreateAndSaveRefreshTokenAsync(user)
         };
