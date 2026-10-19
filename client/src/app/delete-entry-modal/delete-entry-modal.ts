@@ -7,20 +7,22 @@ import { Book } from '../book';
   imports: [],
   template: `
     <div class="modal-header border-0">
-      <span class="modal-title fw-bold fs-5">Remove this book?</span>
+      <span class="modal-title fw-bold fs-5">{{ title }}</span>
     </div>
     <div class="modal-body">
-      <p class="text-secondary">"{{ book.title }}" will be removed from your library.</p>
+      <p class="text-secondary">{{ body }}</p>
     </div>
     <div class="modal-footer border-0">
       <button type="button" class="btn btn-light" (click)="activeModal.dismiss()">Cancel</button>
-      <button type="button" class="btn btn-danger" (click)="activeModal.close()">Delete book</button>
+      <button type="button" class="btn btn-danger" (click)="activeModal.close()">{{ submitLabel }}</button>
     </div>
   `,
-  styleUrl: './delete-book-modal.scss',
+  styleUrl: './delete-entry-modal.scss',
 })
-export class DeleteBookModal {
-  @Input() book!: Book;
+export class DeleteEntryModal {
+  @Input() title = '';
+  @Input() body = '';
+  @Input() submitLabel = 'Delete';
 
-  activeModal = inject(NgbActiveModal);
+  readonly activeModal = inject(NgbActiveModal);
 }

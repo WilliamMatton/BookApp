@@ -3,7 +3,7 @@ import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Book, ReadingStatus } from '../book';
-import { DeleteBookModal } from '../delete-book-modal/delete-book-modal';
+import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
 
 @Component({
   selector: 'app-book-entry',
@@ -63,8 +63,10 @@ export class BookEntry {
   private modalService = inject(NgbModal);
 
   openModal(): void {
-    const modalRef = this.modalService.open(DeleteBookModal);
-    modalRef.componentInstance.book = this.book;
+    const modalRef = this.modalService.open(DeleteEntryModal);
+    modalRef.componentInstance.title = 'Remove this book?';
+    modalRef.componentInstance.body = `"${this.book.title}" will be removed from your library.`
+    modalRef.componentInstance.submitLabel = 'Delete book';
 
     modalRef.closed.subscribe(() => {
       this.deleteRequested.emit(this.book.id);

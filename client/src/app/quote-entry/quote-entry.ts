@@ -1,6 +1,8 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Quote } from '../quote';
+import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
 
 @Component({
   selector: 'app-quote-entry',
@@ -46,7 +48,16 @@ export class QuoteEntry {
   @Input() quote!: Quote;
   @Output() deleteRequested = new EventEmitter<number>();
 
+  private modalService = inject(NgbModal);
+
   openModal(): void {
-    
+    const modalRef = this.modalService.open(DeleteEntryModal);
+    modalRef.componentInstance.title = 'Remove this quote?';
+    modalRef.componentInstance.body = 'It will be removed from your list of quotes.'
+    modalRef.componentInstance.submitLabel = 'Delete quote';
+
+    modalRef.closed.subscribe(() => {
+      this.deleteRequested.emit(this.quote.id);
+    });
   }
 }
