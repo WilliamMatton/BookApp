@@ -7,6 +7,7 @@ import { PageNotFound } from './page-not-found/page-not-found';
 import { Login } from './login/login';
 import { SignUp } from './sign-up/sign-up';
 import { AddQuote } from './add-quote/add-quote';
+import { UpdateQuote } from './update-quote/update-quote';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,11 @@ export const routes: Routes = [
     path: 'quotes/add',
     component: AddQuote,
     title: 'Add Quote',
+  },
+  {
+    path: 'quotes/update/:id',
+    component: UpdateQuote,
+    title: 'Update Quote',
   },
   {
     path: 'not-found',
