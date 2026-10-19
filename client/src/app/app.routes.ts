@@ -6,6 +6,7 @@ import { UpdateBook } from './update-book/update-book';
 import { PageNotFound } from './page-not-found/page-not-found';
 import { Login } from './login/login';
 import { SignUp } from './sign-up/sign-up';
+import { AddQuote } from './add-quote/add-quote';
 
 export const routes: Routes = [
   {
@@ -19,7 +20,7 @@ export const routes: Routes = [
     title: 'Quotes',
   },
   {
-    path: 'add',
+    path: 'add-book',
     component: AddBook,
     title: 'Add Book',
   },
@@ -37,6 +38,11 @@ export const routes: Routes = [
     path: 'login',
     component: Login,
     title: 'Sign In',
+  },
+  {
+    path: 'add-quote',
+    component: AddQuote,
+    title: 'Add Quote',
   },
   {
     path: 'not-found',
