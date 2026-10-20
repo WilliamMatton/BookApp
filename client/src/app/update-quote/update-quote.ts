@@ -37,6 +37,7 @@ type QuoteState =
                   submitLabel="Update quote"
                   [errorMessage]="errorMsg"
                   (submitted)="onSubmit($event)"
+                  (errorDismissed)="this.errorMsg = ''"
                 ></app-quote-form>
               </div>
             </div>

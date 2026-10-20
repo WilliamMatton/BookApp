@@ -37,6 +37,7 @@ type BookState =
                   submitLabel="Update book"
                   [errorMessage]="errorMsg"
                   (submitted)="onSubmit($event)"
+                  (errorDismissed)="this.errorMsg = ''"
                 ></app-book-form>
               </div>
             </div>

@@ -20,6 +20,7 @@ import { NewBook } from '../book';
             submitLabel="Add book"
             [errorMessage]="errorMsg"
             (submitted)="onSubmit($event)"
+            (errorDismissed)="this.errorMsg = ''"
           ></app-book-form>
         </div>
       </div>

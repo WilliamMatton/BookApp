@@ -2,10 +2,11 @@ import { Component, effect, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NewQuote, Quote } from '../quote';
+import { FormError } from '../form-error/form-error';
 
 @Component({
   selector: 'app-quote-form',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, FormError],
   template: `
     <form
       [formGroup]="quoteForm"
@@ -56,7 +57,7 @@ import { NewQuote, Quote } from '../quote';
       <div class="row">
         <div class="col-12 col-sm-6">
           @if (errorMessage()) {
-            <span class="text-danger text-break">{{ errorMessage() }}</span>
+            <app-form-error [message]="errorMessage()" (dismissed)="errorDismissed.emit()"></app-form-error>
           }
         </div>
         <div class="col-12 col-sm-6 d-flex flex-column-reverse flex-sm-row align-items-sm-start justify-content-end gap-2 ps-3 pe-3">
@@ -72,6 +73,7 @@ export class QuoteForm {
   initialValue = input<Pick<Quote, 'quoteText' | 'source'> | null>(null);
   submitLabel = input('Add quote');
   errorMessage = input('');
+  errorDismissed = output<void>();
 
   submitted = output<NewQuote>();
 

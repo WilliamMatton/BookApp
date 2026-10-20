@@ -20,6 +20,7 @@ import { QuoteForm } from '../quote-form/quote-form';
             submitLabel="Add quote"
             [errorMessage]="errorMsg"
             (submitted)="onSubmit($event)"
+            (errorDismissed)="this.errorMsg = ''"
           ></app-quote-form>
         </div>
       </div>

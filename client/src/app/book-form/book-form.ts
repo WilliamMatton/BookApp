@@ -2,10 +2,11 @@ import { Component, input, output, inject, effect } from '@angular/core';
 import { FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Book, NewBook, READING_STATUSES, ReadingStatus } from '../book';
+import { FormError } from '../form-error/form-error';
 
 @Component({
   selector: 'app-book-form',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, FormError],
   template: `
     <form
       [formGroup]="bookForm"
@@ -89,7 +90,7 @@ import { Book, NewBook, READING_STATUSES, ReadingStatus } from '../book';
       <div class="row">
         <div class="col-12 col-sm-6">
           @if (errorMessage()) {
-            <span class="text-danger text-break">{{ errorMessage() }}</span>
+            <app-form-error [message]="errorMessage()" (dismissed)="errorDismissed.emit()"></app-form-error>
           }
         </div>
         <div class="col-12 col-sm-6 d-flex flex-column-reverse flex-sm-row align-items-sm-start justify-content-end gap-2 ps-3 pe-3">
@@ -105,6 +106,7 @@ export class BookForm {
   initialValue = input<Pick<Book, 'title' | 'author' | 'yearPublished' | 'status'> | null>(null);
   submitLabel = input('Add book');
   errorMessage = input('');
+  errorDismissed = output<void>();
 
   submitted = output<NewBook>();
 

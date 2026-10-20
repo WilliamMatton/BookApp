@@ -24,6 +24,7 @@ import { Auth } from '../auth';
             alternateActionText="Already have an account? Click here to log in!"
             alternateActionRoute="/login"
             (submitted)="onSubmit($event)"
+            (errorDismissed)="this.errorMsg = ''"
           ></app-auth-form>
         </div>
       </div>

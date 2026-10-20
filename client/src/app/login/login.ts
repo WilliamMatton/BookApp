@@ -24,6 +24,7 @@ import { Auth } from '../auth';
             alternateActionText="Don't have an account? Click here to create one!"
             alternateActionRoute="/signup"
             (submitted)="onSubmit($event)"
+            (errorDismissed)="this.errorMsg = ''"
           ></app-auth-form>
         </div>
       </div>

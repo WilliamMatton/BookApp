@@ -2,10 +2,11 @@ import { Component, input, output, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../user';
 import { RouterLink } from '@angular/router';
+import { FormError } from '../form-error/form-error';
 
 @Component({
   selector: 'app-auth-form',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, FormError],
   template: `
     <form
       [formGroup]="loginForm"
@@ -60,13 +61,15 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col">
           @if (errorMessage()) {
-            <span class="text-danger text-break">{{ errorMessage() }}</span>
+            <app-form-error [message]="errorMessage()" (dismissed)="errorDismissed.emit()"></app-form-error>
           }
         </div>
+      </div>
+      <div class="row">
         <div
-          class="col-12 col-sm-6 d-flex flex-column flex-sm-row align-items-sm-start justify-content-end gap-2 ps-3 pe-3"
+          class="col d-flex flex-column flex-sm-row align-items-sm-start justify-content-end gap-2 ps-3 pe-3"
         >
           <button type="submit" class="btn btn-primary">{{ submitLabel() }}</button>
         </div>
@@ -89,6 +92,7 @@ export class AuthForm {
   alternateActionRoute = input('');
 
   submitted = output<User>();
+  errorDismissed = output<void>();
 
   loginForm = inject(FormBuilder).nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
