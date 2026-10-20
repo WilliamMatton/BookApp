@@ -4,9 +4,23 @@ import { Component } from '@angular/core';
   selector: 'app-page-not-found',
   imports: [],
   template: `
-    <p>
-      The page you were looking for could not be found!
-    </p>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <span class="text-warning fs-1">
+            <i class="fa-regular fa-face-frown"></i>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex flex-column justify-content-center align-items-center text-warning text-center">
+          <h1>Sorry,</h1>
+          <p class="fw-semibold">
+            The page you were looking for could not be found.
+          </p>
+        </div>
+      </div>
+    </div>
   `,
   styleUrl: './page-not-found.scss',
 })

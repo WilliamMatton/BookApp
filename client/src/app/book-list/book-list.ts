@@ -7,6 +7,7 @@ import { Library } from '../library';
 import { Book } from '../book';
 import { catchError, map, of, startWith, Subject, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ContentError } from '../content-error/content-error';
 
 type BookListState =
     { status: 'loading' }
@@ -15,7 +16,7 @@ type BookListState =
 
 @Component({
   selector: 'app-book-list',
-  imports: [NgbAlertModule, BookEntry, RouterLink, I18nPluralPipe, AsyncPipe],
+  imports: [NgbAlertModule, BookEntry, ContentError, RouterLink, I18nPluralPipe, AsyncPipe],
   template: `
     @if (bookListState$ | async; as state) {
       @switch (state.status) {
@@ -25,9 +26,7 @@ type BookListState =
           </div>
         }
         @case ('error') {
-          <div class="container d-flex align-items-center justify-content-center">
-            <span class="text-danger">{{ state.message }}</span>
-          </div>
+          <app-content-error [message]="state.message"></app-content-error>
         }
         @case ('loaded') {
           @if(state.books.length > 0) {

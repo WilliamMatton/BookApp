@@ -8,6 +8,7 @@ import { Library } from '../library';
 import { Quote } from '../quote';
 import { RouterLink } from '@angular/router';
 import { QuoteEntry } from '../quote-entry/quote-entry';
+import { ContentError } from '../content-error/content-error';
 
 type QuoteListState =
     { status: 'loading' }
@@ -16,7 +17,7 @@ type QuoteListState =
 
 @Component({
   selector: 'app-quote-list',
-  imports: [AsyncPipe, I18nPluralPipe, NgbAlertModule, RouterLink, QuoteEntry],
+  imports: [AsyncPipe, I18nPluralPipe, NgbAlertModule, RouterLink, QuoteEntry, ContentError],
   template: `
     @if (quoteListState$ | async; as state) {
       @switch (state.status) {
@@ -26,9 +27,7 @@ type QuoteListState =
           </div>
         }
         @case ('error') {
-          <div class="container d-flex align-items-center justify-content-center">
-            <span class="text-danger">{{ state.message }}</span>
-          </div>
+          <app-content-error [message]="state.message"></app-content-error>
         }
         @case ('loaded') {
           @if(state.quotes.length > 0) {

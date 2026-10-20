@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Library } from '../library';
 import { BookForm } from '../book-form/book-form';
 import { Book, NewBook } from '../book';
+import { ContentError } from '../content-error/content-error';
 
 type BookState =
     { status: 'loading' }
@@ -14,7 +15,7 @@ type BookState =
 
 @Component({
   selector: 'app-update-book',
-  imports: [BookForm, AsyncPipe],
+  imports: [BookForm, AsyncPipe, ContentError],
   template: `
     @if (bookState$ | async; as state) {
       @switch (state.status) {
@@ -42,9 +43,7 @@ type BookState =
           </div>
         }
         @case ('error') {
-          <div class="container d-flex align-items-center justify-content-center">
-            <span class="text-danger">{{ state.message }}</span>
-          </div>
+          <app-content-error [message]="state.message"></app-content-error>
         }
       }
     }

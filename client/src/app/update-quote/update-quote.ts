@@ -6,6 +6,7 @@ import { catchError, map, of, startWith } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
 import { QuoteForm } from '../quote-form/quote-form';
+import { ContentError } from '../content-error/content-error';
 
 type QuoteState =
     { status: 'loading' }
@@ -14,7 +15,7 @@ type QuoteState =
 
 @Component({
   selector: 'app-update-quote',
-  imports: [AsyncPipe, QuoteForm],
+  imports: [AsyncPipe, QuoteForm, ContentError],
   template: `
     @if (quoteState$ | async; as state) {
       @switch (state.status) {
@@ -42,9 +43,7 @@ type QuoteState =
           </div>
         }
         @case ('error') {
-          <div class="container d-flex align-items-center justify-content-center">
-            <span class="text-danger">{{ state.message }}</span>
-          </div>
+          <app-content-error [message]="state.message"></app-content-error>
         }
       }
     }
