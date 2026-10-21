@@ -100,6 +100,17 @@ $nav-link-disabled-color: $text-subtle-light;
 $nav-pills-link-active-color: $text-light;
 $nav-pills-link-active-bg: $surface-muted-light;
 
+$card-bg: $surface-light;
+$card-color: $text-light;
+$card-border-color: $border-light;
+$card-cap-bg: $surface-subtle-light;
+$card-cap-color: $text-subtle-light;
+$card-border-radius: 0.7rem;
+
+$list-group-bg: $surface-light;
+$list-group-hover-bg: $surface-hover-light;
+$list-group-action-active-bg:$surface-hover-light;
+
 $font-family-sans-serif:
   'DM Sans',
   system-ui,
@@ -241,5 +252,19 @@ $utilities: map-merge(
   .nav-pills {
     --bs-nav-pills-link-active-color: #{$text-dark};
     --bs-nav-pills-link-active-bg: #{$surface-muted-dark};
+  }
+
+  .card {
+    --bs-card-bg: #{$surface-subtle-dark};
+    --bs-card-color: #{$text-dark};
+    --bs-card-border-color: #{$border-dark};
+    --bs-card-cap-bg: #{$surface-subtle-dark};
+    --bs-card-cap-color: #{$text-subtle-dark};
+  }
+
+  .list-group {
+    --bs-list-group-bg: #{$surface-dark};
+    --bs-list-group-action-hover-bg: #{$surface-hover-dark};
+    --bs-list-group-action-active-bg: #{$surface-hover-dark};
   }
 }
