@@ -19,6 +19,18 @@ type QuoteListState =
   selector: 'app-quote-list',
   imports: [AsyncPipe, I18nPluralPipe, NgbAlertModule, RouterLink, QuoteEntry, ContentError],
   template: `
+    @if (alertMsg.length > 0) {
+      <div class="row">
+        <div class="col">
+          <ngb-alert
+            type="warning"
+            (closed)="this.alertMsg=''"
+          >
+              {{ alertMsg }}
+          </ngb-alert>
+        </div>
+      </div>
+    }
     @if (quoteListState$ | async; as state) {
       @switch (state.status) {
         @case ('loading') {
@@ -31,8 +43,8 @@ type QuoteListState =
         }
         @case ('loaded') {
           @if(state.quotes.length > 0) {
-            <div class="container bg-white rounded-4 border">
-              <div class="row p-2 ps-lg-3 pe-lg-3 bg-light rounded-top-4 border-bottom d-none d-sm-flex align-items-center">
+            <div class="card p-0 overflow-hidden">
+              <div class="card-header p-2 ps-lg-3 pe-lg-3 d-none d-sm-flex align-items-center">
                 <div class="col-6 col-sm-6 col-md-8">
                   <span class="text-secondary fs-8 fw-medium text-uppercase ls-wide">Quote</span>
                 </div>
@@ -43,28 +55,31 @@ type QuoteListState =
                   <span class="text-secondary fs-8 fw-medium text-uppercase ls-wide">Actions</span>
                 </div>
               </div>
-              @for(quote of state.quotes; track quote.id; let last = $last) {
-                <div class="row" [class.border-bottom]="!last">
-                  <app-quote-entry [quote]="quote" (deleteRequested)="deleteQuote($event)"></app-quote-entry>
-                </div>
-              }
+              <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                  @for(quote of state.quotes; track quote.id) {
+                    <li class="list-group-item list-group-item-action">
+                      <app-quote-entry [quote]="quote" (deleteRequested)="deleteQuote($event)"></app-quote-entry>
+                    </li>
+                  }
+                </ul>
+              </div>
             </div>
           } @else {
-            <div class="container ps-0 pe-0 pt-5 pb-5 d-flex flex-column align-items-center gap-3 bg-white rounded-4 border" style="--bs-border-style: dashed;">
-              <span class="fs-2"><i class="fa-solid fa-book align-middle"></i></span>
-              <p class="p-0 m-0 fs-5 fw-semibold text-center">No saved quotes</p>
-              <p class="p-0 m-0 text-secondary text-center">Add your first quote to the list</p>
-              <a class="btn btn-link fw-semibold fs-7 text-success" routerLink="/quotes/add">Add a quote</a>
+            <div class="card ps-0 pe-0 pt-5 pb-5">
+              <div class="card-body d-flex flex-column align-items-center gap-3">
+                <span class="fs-2"><i class="fa-solid fa-book align-middle"></i></span>
+                <p class="p-0 m-0 fs-5 fw-semibold text-center">No saved quotes</p>
+                <p class="p-0 m-0 text-secondary text-center">Add your first quote to the list</p>
+                <a class="fw-semibold fs-7" routerLink="/quotes/add">Add a quote</a>
+              </div>
             </div>
           }
           <div class="row">
-            <p class="text-secondary mt-3 fs-7">{{ state.quotes.length | i18nPlural: quoteCountMapping }} in your library</p>
-          </div>
-          @if (alertMsg.length > 0) {
-            <div class="row">
-              <ngb-alert type="warning">{{ alertMsg }}</ngb-alert>
+            <div class="col">
+              <p class="text-secondary mt-3 fs-7">{{ state.quotes.length | i18nPlural: quoteCountMapping }} in your library</p>
             </div>
-          }
+          </div>
         }
       }
     }

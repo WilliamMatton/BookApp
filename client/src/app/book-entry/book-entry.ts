@@ -29,7 +29,7 @@ import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
       </div>
       <div class="col-12 col-sm-3 col-md-2 col-lg-2 d-flex align-items-center justify-content-sm-center gap-2">
         <a
-          class="btn border rounded-3 fs-7 opacity-75 update-book-button"
+          class="btn border rounded-3 fs-7 opacity-75"
           [routerLink]="['/books/update', book.id]"
           aria-label="Edit book"
         >
@@ -37,7 +37,7 @@ import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
         </a>
         <button
           type="button"
-          class="btn border rounded-3 fs-7 opacity-75 delete-book-button"
+          class="btn border rounded-3 fs-7 opacity-75"
           aria-label="Delete book"
           (click)="openModal()"
         >
