@@ -32,13 +32,15 @@ type QuoteState =
             </div>
             <div class="row">
               <div class="col">
-                <app-quote-form
-                  [initialValue]="state.quote"
-                  submitLabel="Update quote"
-                  [errorMessage]="errorMsg"
-                  (submitted)="onSubmit($event)"
-                  (errorDismissed)="this.errorMsg = ''"
-                ></app-quote-form>
+                <div class="card">
+                  <app-quote-form
+                    [initialValue]="state.quote"
+                    submitLabel="Update quote"
+                    [errorMessage]="errorMsg"
+                    (submitted)="onSubmit($event)"
+                    (errorDismissed)="this.errorMsg = ''"
+                  ></app-quote-form>
+                </div>
               </div>
             </div>
           </div>

@@ -183,6 +183,15 @@ $utilities: map-merge(
   --bs-btn-hover-color: #{$text-dark};
 }
 
+.btn-primary {
+  --bs-btn-hover-bg: #{$primary-hover-light};
+}
+
+.btn-light {
+  --bs-btn-hover-bg: #{$surface-light};
+  --bs-btn-hover-color: #{$text-light};
+}
+
 @include color-mode(dark) {
   --bs-primary: $primary-dark;
   --bs-secondary: $text-muted-dark;
@@ -203,23 +212,26 @@ $utilities: map-merge(
   --bs-to-read-bg-rgb: #{to-rgb($status-toread-bg-dark)};
 
   .btn-primary {
-    --bs-btn-bg: #{$primary-dark};
-    --bs-btn-color: #{$text-light};
-    --bs-btn-border-color: #{$primary-dark};
-    --bs-btn-hover-bg: #{shade-color($primary-dark, 10%)};
-    --bs-btn-hover-border-color: #{shade-color($primary-dark, 10%)};
-    --bs-btn-active-bg: #{shade-color($primary-dark, 20%)};
-    --bs-btn-active-border-color: #{shade-color($primary-dark, 20%)};
+    --bs-btn-hover-color: #{$text-light};
   }
 
   .btn {
     --bs-btn-hover-bg: #{shade-color($primary-dark, 10%)};
   }
 
+  .btn-light {
+    --bs-btn-hover-bg:#{$primary-dark};
+    --bs-btn-hover-color: #{$text-dark};
+  }
+
+  .btn-danger {
+    --bs-btn-hover-bg:#{$danger-bg-subtle-dark};
+  }
+
   .form-control,
   .form-select {
     color: $text-dark;
-    background-color: $surface-subtle-dark;
+    background-color: $page-dark;
     border-color: $border-dark;
 
     &:focus {

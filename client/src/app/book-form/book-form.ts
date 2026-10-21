@@ -12,7 +12,7 @@ import { FormError } from '../form-error/form-error';
       [formGroup]="bookForm"
       (ngSubmit)="submit()"
       novalidate
-      class="border rounded-3 p-3"
+      class="p-3"
     >
       <div class="row mb-3">
         <div class="col">

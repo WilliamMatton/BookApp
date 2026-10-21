@@ -16,12 +16,14 @@ import { NewBook } from '../book';
       </div>
       <div class="row">
         <div class="col">
-          <app-book-form
-            submitLabel="Add book"
-            [errorMessage]="errorMsg"
-            (submitted)="onSubmit($event)"
-            (errorDismissed)="this.errorMsg = ''"
-          ></app-book-form>
+          <div class="card">
+            <app-book-form
+              submitLabel="Add book"
+              [errorMessage]="errorMsg"
+              (submitted)="onSubmit($event)"
+              (errorDismissed)="this.errorMsg = ''"
+            ></app-book-form>
+          </div>
         </div>
       </div>
     </div>

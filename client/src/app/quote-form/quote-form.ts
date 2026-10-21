@@ -12,14 +12,14 @@ import { FormError } from '../form-error/form-error';
       [formGroup]="quoteForm"
       (ngSubmit)="submit()"
       novalidate
-      class="bg-white border rounded-3 p-3"
+      class="p-3"
     >
       <div class="row mb-3">
         <div class="col">
           <label for="quoteInputText" class="form-label fs-7">Quote</label>
           <input
             type="text"
-            class="form-control bg-light"
+            class="form-control"
             id="quoteInputText"
             placeholder="Type a quote"
             formControlName="quoteText"
@@ -39,7 +39,7 @@ import { FormError } from '../form-error/form-error';
           <label for="quoteInputSource" class="form-label fs-7">Source</label>
           <input
             type="text"
-            class="form-control bg-light"
+            class="form-control"
             id="quoteInputSource"
             placeholder="John Doe - 2000"
             formControlName="source"

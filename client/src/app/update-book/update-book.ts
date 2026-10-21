@@ -32,13 +32,15 @@ type BookState =
             </div>
             <div class="row">
               <div class="col">
-                <app-book-form
-                  [initialValue]="state.book"
-                  submitLabel="Update book"
-                  [errorMessage]="errorMsg"
-                  (submitted)="onSubmit($event)"
-                  (errorDismissed)="this.errorMsg = ''"
-                ></app-book-form>
+                <div class="card">
+                  <app-book-form
+                    [initialValue]="state.book"
+                    submitLabel="Update book"
+                    [errorMessage]="errorMsg"
+                    (submitted)="onSubmit($event)"
+                    (errorDismissed)="this.errorMsg = ''"
+                  ></app-book-form>
+                </div>
               </div>
             </div>
           </div>
