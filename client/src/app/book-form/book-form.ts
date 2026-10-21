@@ -12,14 +12,14 @@ import { FormError } from '../form-error/form-error';
       [formGroup]="bookForm"
       (ngSubmit)="submit()"
       novalidate
-      class="bg-white border rounded-3 p-3"
+      class="border rounded-3 p-3"
     >
       <div class="row mb-3">
         <div class="col">
           <label for="bookInputTitle" class="form-label fs-7">Title</label>
           <input
             type="text"
-            class="form-control bg-light"
+            class="form-control"
             id="bookInputTitle"
             placeholder="Book title"
             formControlName="title"
@@ -39,7 +39,7 @@ import { FormError } from '../form-error/form-error';
           <label for="bookInputAuthor" class="form-label fs-7">Author</label>
           <input
             type="text"
-            class="form-control bg-light"
+            class="form-control"
             id="bookInputAuthor"
             placeholder="Author name"
             formControlName="author"
@@ -59,7 +59,7 @@ import { FormError } from '../form-error/form-error';
           <label for="bookInputYear" class="form-label fs-7">Year</label>
           <input
             type="number"
-            class="form-control bg-light"
+            class="form-control"
             id="bookInputYear"
             min="1"
             max="2099"
@@ -80,7 +80,7 @@ import { FormError } from '../form-error/form-error';
         </div>
         <div class="col-12 col-sm-6">
           <label for="bookSelectStatus" class="form-label fs-7">Status</label>
-          <select class="form-select bg-light" id="bookSelectStatus" formControlName="status">
+          <select class="form-select" id="bookSelectStatus" formControlName="status">
             <option value="ToRead">To read</option>
             <option value="Reading">Reading</option>
             <option value="Read">Read</option>

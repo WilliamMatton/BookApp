@@ -57,6 +57,19 @@ import { Auth } from '../auth';
                 Log in
               </a>
             }
+            <button
+              type="button"
+              class="btn border rounded-3 fs-7 opacity-75"
+              (click)="toggleTheme()"
+            >
+              <span class="fw-lighter">
+                @if(this.isDark()) {
+                  <i class="fa-regular fa-lightbulb align-middle"></i>
+                } @else {
+                  <i class="fa-regular fa-moon align-middle"></i>
+                }
+              </span>
+            </button>
           </div>
         </div>
       </nav>
@@ -66,6 +79,7 @@ import { Auth } from '../auth';
 })
 export class Header {
   auth = inject(Auth);
+  isDark = signal(document.documentElement.getAttribute('data-bs-theme') === 'dark');
 
   readonly isMenuCollapsed = signal(true);
 
@@ -76,5 +90,11 @@ export class Header {
         console.error('Failed to invalidate the server session', error);
       },
     });
+  }
+
+  toggleTheme() {
+    const nextState = !this.isDark();
+    this.isDark.set(nextState);
+    document.documentElement.setAttribute('data-bs-theme', nextState ? 'dark' : 'light');
   }
 }

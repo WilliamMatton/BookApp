@@ -1,5 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 
+$page-light: #f7f7f4;
+$surface-light: #ffffff;
+$surface-subtle-light: #fafaf8;
+$surface-hover-light: #fbfbf9;
+$surface-muted-light: #ecece8;
+$text-light: #20231f;
+$text-strong-light: #252824;
+$text-muted-light: #6c716a;
+$text-subtle-light: #8a8f87;
+$border-light: #dfe0da;
+$border-subtle-light: #e7e8e3;
+$border-strong-light: #bec1b9;
+$primary-light: #26342d;
+$primary-hover-light: #17211c;
+$accent-light: #8a6f45;
+$danger-light: #a34c37;
+$status-read-bg-light: #e6f0e8;
+$status-read-text-light: #3e6848;
+$status-reading-bg-light: #f4ebd8;
+$status-reading-text-light: #84662e;
+$status-toread-bg-light: #ececf2;
+$status-toread-text-light: #626378;
+
+$page-dark: #171c19;
+$surface-dark: #202722;
+$surface-subtle-dark: #1c221e;
+$surface-hover-dark: #252d27;
+$surface-muted-dark: #29312b;
+$text-dark: #f2f0e8;
+$text-strong-dark: #faf8f0;
+$text-muted-dark: #a9b0a8;
+$text-subtle-dark: #858d85;
+$border-dark: #343d36;
+$border-subtle-dark: #303832;
+$border-strong-dark: #566158;
+$primary-dark: #9db7a5;
+$primary-hover-dark: #b6ccbc;
+$accent-dark: #d1aa6d;
+$danger-dark: #df8069;
+$status-read-bg-dark: #233b2b;
+$status-read-text-dark: #9bd0a7;
+$status-reading-bg-dark: #433820;
+$status-reading-text-dark: #e4c57f;
+$status-toread-bg-dark: #30313f;
+$status-toread-text-dark: #bcbed8;
+$focus-dark: #9db7a5;
+
 @import '@fontsource/dm-sans/400.css';
 @import '@fontsource/dm-sans/500.css';
 @import '@fontsource/dm-sans/600.css';
@@ -9,67 +56,190 @@
 
 @import 'bootstrap/scss/functions';
 
-$primary: #26342D;
-$secondary: #6C716A;
-$success: #3E6848;
-$warning: #84662E;
-$danger: #A34C37;
-$info: #626378;
+$primary: $primary-light;
+$secondary: $text-muted-light;
+$success: $status-read-text-light;
+$warning: $status-reading-text-light;
+$danger: $danger-light;
+$info: $status-toread-text-light;
 
-$light: #F7F7F4;
-$dark: #20231F;
+$light: $page-light;
+$dark: $text-light;
 
-$body-bg: #F7F7F4;
-$body-color: #20231F;
-$secondary-color: #6C716A;
+$body-bg: $page-light;
+$body-color: $text-light;
+$body-secondary-color: $text-muted-light;
 
-$card-bg: white;
-$modal-content-bg: white;
-$dropdown-bg: white;
+$border-color: $border-light;
+$border-color-translucent: rgba($text-light, 0.12);
 
-$border-color: #DFE0DA;
-$border-color-translucent: rgba(#20231F, 0.12);
+$link-color: $primary-light;
+$link-hover-color: $primary-hover-light;
 
-$link-color: #26342D;
-$link-hover-color: #17211C;
+$input-bg: $surface-subtle-light;
+$input-disabled-bg: $surface-muted-light;
+$input-color: $text-light;
+$input-border-color: $border-light;
+$input-placeholder-color: $text-subtle-light;
 
-$font-family-sans-serif: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-$headings-font-family: "DM Serif Display", serif;
+$form-select-bg: $surface-subtle-light;
+$form-select-color: $text-light;
+$form-select-border-color: $border-light;
+
+$modal-content-bg: $surface-light;
+$modal-content-color: $text-light;
+$modal-content-border-color: $border-light;
+$modal-header-border-color: $border-subtle-light;
+$modal-footer-border-color: $border-subtle-light;
+$modal-backdrop-bg: $primary-light;
+$modal-backdrop-opacity: 0.35;
+
+$nav-link-color: $text-muted-light;
+$nav-link-hover-color: $text-light;
+$nav-link-disabled-color: $text-subtle-light;
+$nav-pills-link-active-color: $text-light;
+$nav-pills-link-active-bg: $surface-muted-light;
+
+$font-family-sans-serif:
+  'DM Sans',
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  Roboto,
+  sans-serif;
+$headings-font-family: 'DM Serif Display', serif;
 
 @import 'bootstrap/scss/variables';
+
+$body-bg-dark: $page-dark;
+$body-color-dark: $text-dark;
+$body-secondary-color-dark: $text-muted-dark;
+
+$border-color-dark: $border-dark;
+$border-color-translucent-dark: rgba($text-dark, 0.12);
+
+$link-color-dark: $primary-dark;
+$link-hover-color-dark: $primary-hover-dark;
+
 @import 'bootstrap/scss/variables-dark';
 
 $custom-colors: (
-  "read": #3E6848,
-  "reading": #84662E,
-  "to-read": #626378,
-  "accent": #8A6F45
+  'read': $status-read-text-light,
+  'read-bg': $status-read-bg-light,
+  'reading': $status-reading-text-light,
+  'reading-bg': $status-reading-bg-light,
+  'to-read': $status-toread-text-light,
+  'to-read-bg': $status-toread-bg-light,
+  'accent': $accent-light,
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
-$font-sizes: map-merge($font-sizes, (
-  7: 0.875rem,
-  8: 0.75rem,
-  9: 0.6rem,
-  10: 0.5rem
-));
+$font-sizes: map-merge(
+  $font-sizes,
+  (
+    7: 0.875rem,
+    8: 0.75rem,
+    9: 0.6rem,
+    10: 0.5rem,
+  )
+);
 
 @import 'bootstrap/scss/maps';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
 
-$utilities: map-merge($utilities, (
-  "letter-spacing": (
-    property: letter-spacing,
-    class: ls,
-    values: (
-      tight: -0.02em,
-      normal: normal,
-      wide: 0.07em,
-      wider: 0.13em
-    )
+$utilities: map-merge(
+  $utilities,
+  (
+    'letter-spacing': (
+      property: letter-spacing,
+      class: ls,
+      values: (
+        tight: -0.02em,
+        normal: normal,
+        wide: 0.07em,
+        wider: 0.13em,
+      ),
+    ),
   )
-));
+);
 
 @import 'bootstrap/scss/bootstrap';
+
+.btn {
+  --bs-btn-hover-bg: #{$primary-light};
+  --bs-btn-hover-color: #{$text-dark};
+}
+
+@include color-mode(dark) {
+  --bs-primary: $primary-dark;
+  --bs-secondary: $text-muted-dark;
+  --bs-success: $status-read-text-dark;
+  --bs-warning: $status-reading-text-dark;
+  --bs-danger: $danger-dark;
+  --bs-info: $status-toread-text-dark;
+  --bs-light: $page-dark;
+  --bs-dark: $text-dark;
+
+  --bs-read-rgb: #{to-rgb($status-read-text-dark)};
+  --bs-read-bg-rgb: #{to-rgb($status-read-bg-dark)};
+
+  --bs-reading-rgb: #{to-rgb($status-reading-text-dark)};
+  --bs-reading-bg-rgb: #{to-rgb($status-reading-bg-dark)};
+
+  --bs-to-read-rgb: #{to-rgb($status-toread-text-dark)};
+  --bs-to-read-bg-rgb: #{to-rgb($status-toread-bg-dark)};
+
+  .btn-primary {
+    --bs-btn-bg: #{$primary-dark};
+    --bs-btn-color: #{$text-light};
+    --bs-btn-border-color: #{$primary-dark};
+    --bs-btn-hover-bg: #{shade-color($primary-dark, 10%)};
+    --bs-btn-hover-border-color: #{shade-color($primary-dark, 10%)};
+    --bs-btn-active-bg: #{shade-color($primary-dark, 20%)};
+    --bs-btn-active-border-color: #{shade-color($primary-dark, 20%)};
+  }
+
+  .btn {
+    --bs-btn-hover-bg: #{shade-color($primary-dark, 10%)};
+  }
+
+  .form-control,
+  .form-select {
+    color: $text-dark;
+    background-color: $surface-subtle-dark;
+    border-color: $border-dark;
+
+    &:focus {
+      color: $text-dark;
+      background-color: $surface-subtle-dark;
+      border-color: $focus-dark;
+      box-shadow: 0 0 0 0.25rem rgba($focus-dark, 0.2);
+    }
+  }
+
+  .modal {
+    --bs-modal-color: #{$text-dark};
+    --bs-modal-bg: #{$surface-dark};
+    --bs-modal-border-color: #{$border-dark};
+    --bs-modal-header-border-color: #{$border-subtle-dark};
+    --bs-modal-footer-border-color: #{$border-subtle-dark};
+  }
+
+  .modal-backdrop {
+    --bs-backdrop-bg: #090d0b;
+    --bs-backdrop-opacity: 0.7;
+  }
+
+  .nav {
+    --bs-nav-link-color: #{$text-muted-dark};
+    --bs-nav-link-hover-color: #{$text-dark};
+    --bs-nav-link-disabled-color: #{$text-subtle-dark};
+  }
+
+  .nav-pills {
+    --bs-nav-pills-link-active-color: #{$text-dark};
+    --bs-nav-pills-link-active-bg: #{$surface-muted-dark};
+  }
+}

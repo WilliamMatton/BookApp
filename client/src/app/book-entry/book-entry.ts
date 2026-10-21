@@ -19,7 +19,7 @@ import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
           </div>
         </div>
         <div class="col-12 col-sm-2 col-md-2 col-lg-1 d-flex align-items-center justify-content-sm-center">
-          <span class="fs-7 fw-medium bg-opacity-25 ps-2 pe-2 rounded-pill"
+          <span class="fs-7 fw-medium ps-2 pe-2 rounded-pill"
             [ngClass]="statusClasses[book.status]"
           >
             {{book.status}}
@@ -55,9 +55,9 @@ export class BookEntry {
   @Output() deleteRequested = new EventEmitter<number>();
 
   readonly statusClasses: Record<ReadingStatus, string> = {
-    Reading: 'text-reading bg-reading',
-    Read: 'text-read bg-read',
-    ToRead: 'text-to-read bg-to-read',
+    Reading: 'text-reading bg-reading-bg',
+    Read: 'text-read bg-read-bg',
+    ToRead: 'text-to-read bg-to-read-bg',
   };
 
   private modalService = inject(NgbModal);

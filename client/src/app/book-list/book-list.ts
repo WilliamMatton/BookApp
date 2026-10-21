@@ -30,7 +30,7 @@ type BookListState =
         }
         @case ('loaded') {
           @if(state.books.length > 0) {
-            <div class="container bg-white rounded-4 border">
+            <div class="container bg-body rounded-4 border">
               <div class="row p-2 ps-lg-3 pe-lg-3 bg-light rounded-top-4 border-bottom d-none d-sm-flex align-items-center">
                 <div class="col-6 col-sm-6 col-md-6 col-lg-8 col-xl-8">
                   <span class="text-secondary fs-8 fw-medium text-uppercase ls-wide">Book</span>
