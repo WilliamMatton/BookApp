@@ -40,36 +40,40 @@ import { Auth } from '../auth';
                 >Quotes</a>
               </li>
             </ul>
-            @if(auth.isAuthenticated()) {
-              <button
-                type="button"
-                class="btn btn-link"
-                (click)="logout()"
-              >
-                Log out
-              </button>
-            } @else {
-              <a
-                class="btn btn-link"
-                routerLink="/login"
-                (click)="isMenuCollapsed.set(true)"
-              >
-                Log in
-              </a>
-            }
-            <button
-              type="button"
-              class="btn border rounded-3 fs-7 opacity-75"
-              (click)="toggleTheme()"
-            >
-              <span class="fw-lighter">
-                @if(this.isDark()) {
-                  <i class="fa-regular fa-lightbulb align-middle"></i>
+            <div class="row ms-1 ms-md-3">
+              <div class="col d-flex gap-2 align-items-center">
+                @if(auth.isAuthenticated()) {
+                  <button
+                    type="button"
+                    class="btn-link"
+                    (click)="logout()"
+                  >
+                    Log out
+                  </button>
                 } @else {
-                  <i class="fa-regular fa-moon align-middle"></i>
+                  <a
+                    class="btn-link"
+                    routerLink="/login"
+                    (click)="isMenuCollapsed.set(true)"
+                  >
+                    Log in
+                  </a>
                 }
-              </span>
-            </button>
+                <button
+                  type="button"
+                  class="btn border rounded-3 fs-7 opacity-75"
+                  (click)="toggleTheme()"
+                >
+                  <span class="fw-lighter">
+                    @if(this.isDark()) {
+                      <i class="fa-regular fa-lightbulb align-middle"></i>
+                    } @else {
+                      <i class="fa-regular fa-moon align-middle"></i>
+                    }
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
