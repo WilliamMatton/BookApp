@@ -12,14 +12,14 @@ import { FormError } from '../form-error/form-error';
       [formGroup]="loginForm"
       (ngSubmit)="submit()"
       novalidate
-      class="bg-white border rounded-3 p-3"
+      class="p-3"
     >
       <div class="row mb-3">
         <div class="col">
           <label for="loginInputEmail" class="form-label fs-7">Email</label>
           <input
             type="email"
-            class="form-control bg-light"
+            class="form-control"
             id="loginInputEmail"
             placeholder="example@email.com"
             formControlName="email"
@@ -42,7 +42,7 @@ import { FormError } from '../form-error/form-error';
           <label for="loginInputPassword" class="form-label fs-7">Password</label>
           <input
             type="password"
-            class="form-control bg-light"
+            class="form-control"
             id="loginInputPassword"
             placeholder="Password"
             formControlName="password"

@@ -18,14 +18,16 @@ import { Auth } from '../auth';
       </div>
       <div class="row d-flex justify-content-center">
         <div class="col col-md-6 col-lg-4">
-          <app-auth-form
-            submitLabel="Log in"
-            [errorMessage]="errorMsg"
-            alternateActionText="Don't have an account? Click here to create one!"
-            alternateActionRoute="/signup"
-            (submitted)="onSubmit($event)"
-            (errorDismissed)="this.errorMsg = ''"
-          ></app-auth-form>
+          <div class="card">
+            <app-auth-form
+              submitLabel="Log in"
+              [errorMessage]="errorMsg"
+              alternateActionText="Don't have an account? Click here to create one!"
+              alternateActionRoute="/signup"
+              (submitted)="onSubmit($event)"
+              (errorDismissed)="this.errorMsg = ''"
+            ></app-auth-form>
+          </div>
         </div>
       </div>
     </div>
