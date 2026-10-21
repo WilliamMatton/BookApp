@@ -1,5 +1,7 @@
+using System.Security.Claims;
 using Api.Models;
 using Api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -38,5 +40,17 @@ public class AuthController(IAuthService authService) : ControllerBase
         }
 
         return Ok(result);
+    }
+
+    [Authorize]
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if(!Guid.TryParse(userId, out var id))
+            return Unauthorized();
+        
+        await authService.LogoutAsync(id);
+        return NoContent();
     }
 }

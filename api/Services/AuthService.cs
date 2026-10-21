@@ -124,4 +124,17 @@ public class AuthService(AppDbContext context, IConfiguration configuration) : I
 
         return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
     }
+
+    public async Task LogoutAsync(Guid userId)
+    {
+        var user = await context.Users.FirstOrDefaultAsync(i => i.Id == userId);
+        if (user is null)
+        {
+            return;
+        }
+
+        user.RefreshToken = null;
+        user.RefreshTokenExpiry = null;
+        await context.SaveChangesAsync();
+    }
 }

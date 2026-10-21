@@ -2,7 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User, TokenResponse } from './user';
 import { environment } from '../environments/environment';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +20,12 @@ export class Auth {
 
   login(info: User): Observable<TokenResponse> {
     return this.http.post<TokenResponse>(`${this.url}/Auth/login`, info);
+  }
+
+  logout(): Observable<void> {
+    return this.http.post<void>(`${this.url}/Auth/logout`, null).pipe(
+      finalize(() => this.deleteSession()),
+    );
   }
 
   createSession(tokenResponse: TokenResponse) {

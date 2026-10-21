@@ -71,6 +71,10 @@ export class Header {
 
   logout() {
     this.isMenuCollapsed.set(true);
-    this.auth.deleteSession();
+    this.auth.logout().subscribe({
+      error: (error) => {
+        console.error('Failed to invalidate the server session', error);
+      },
+    });
   }
 }
