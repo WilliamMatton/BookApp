@@ -1,4 +1,5 @@
 using Api.Data;
+using Api.Entities;
 using Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,34 +14,64 @@ public class QuotesController(AppDbContext context) : ControllerBase
     private readonly AppDbContext _context = context;
 
     [HttpGet]
-    public async Task<ActionResult<List<Quote>>> GetQuotes()
+    public async Task<ActionResult<List<QuoteResponseDto>>> GetQuotes()
     {
-        return Ok(await _context.Quotes.ToListAsync());
+        var quotes = await _context.Quotes.Select(quote =>
+            new QuoteResponseDto
+            {
+                Id = quote.Id,
+                QuoteText = quote.QuoteText,
+                Source = quote.Source
+            }
+        ).ToListAsync();
+
+        return Ok(quotes);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Quote>> GetQuoteById(int id)
+    public async Task<ActionResult<QuoteResponseDto>> GetQuoteById(int id)
     {
         var quote = await _context.Quotes.FindAsync(id);
         if (quote is null)
             return NotFound();
-        return Ok(quote);
+
+        return Ok(new QuoteResponseDto
+        {
+            Id = quote.Id,
+            QuoteText = quote.QuoteText,
+            Source = quote.Source
+        });
     }
 
     [Authorize]
     [HttpPost]
-    public async Task<ActionResult<Quote>> AddQuote(Quote newQuote)
+    public async Task<ActionResult<QuoteResponseDto>> AddQuote(CreateQuoteDto newQuote)
     {
         if (newQuote is null)
             return BadRequest();
-        _context.Quotes.Add(newQuote);
+
+        var quote = new Quote
+        {
+            QuoteText = newQuote.QuoteText,
+            Source = newQuote.Source
+        };
+
+        _context.Quotes.Add(quote);
         await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetQuoteById), new { id = newQuote.Id }, newQuote);
+        return CreatedAtAction(
+            nameof(GetQuoteById),
+            new { id = quote.Id },
+            new QuoteResponseDto
+            {
+                Id = quote.Id,
+                QuoteText = quote.QuoteText,
+                Source = quote.Source
+            });
     }
 
     [Authorize]
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateQuote(int id, Quote updatedQuote)
+    public async Task<IActionResult> UpdateQuote(int id, CreateQuoteDto updatedQuote)
     {
         var quote = await _context.Quotes.FindAsync(id);
         if (quote is null)

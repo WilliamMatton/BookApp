@@ -1,4 +1,5 @@
 using Api.Data;
+using Api.Entities;
 using Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,34 +14,72 @@ public class BooksController(AppDbContext context) : ControllerBase
     private readonly AppDbContext _context = context;
 
     [HttpGet]
-    public async Task<ActionResult<List<Book>>> GetBooks()
+    public async Task<ActionResult<List<BookResponseDto>>> GetBooks()
     {
-        return Ok(await _context.Books.ToListAsync());
+        var books = await _context.Books.Select(book =>
+            new BookResponseDto
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Author = book.Author,
+                YearPublished = book.YearPublished,
+                Status = book.Status
+            }
+        ).ToListAsync();
+
+        return Ok(books);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Book>> GetBookById(int id)
+    public async Task<ActionResult<BookResponseDto>> GetBookById(int id)
     {
         var book = await _context.Books.FindAsync(id);
         if (book == null)
             return NotFound();
-        return Ok(book);
+
+        return Ok(new BookResponseDto
+        {
+            Id = book.Id,
+            Title = book.Title,
+            Author = book.Author,
+            YearPublished = book.YearPublished,
+            Status = book.Status
+        });
     }
 
     [Authorize]
     [HttpPost]
-    public async Task<ActionResult<Book>> AddBook(Book newBook)
+    public async Task<ActionResult<BookResponseDto>> AddBook(CreateBookDto newBook)
     {
         if (newBook == null)
             return BadRequest();
-        _context.Books.Add(newBook);
+
+        var book = new Book
+        {
+            Title = newBook.Title,
+            Author = newBook.Author,
+            YearPublished = newBook.YearPublished,
+            Status = newBook.Status
+        };
+
+        _context.Books.Add(book);
         await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetBookById), new { id = newBook.Id }, newBook);
+        return CreatedAtAction(
+            nameof(GetBookById),
+            new { id = book.Id },
+            new BookResponseDto
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Author = book.Author,
+                YearPublished = book.YearPublished,
+                Status = book.Status
+            });
     }
 
     [Authorize]
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateBook(int id, Book updatedBook)
+    public async Task<IActionResult> UpdateBook(int id, CreateBookDto updatedBook)
     {
         var book = await _context.Books.FindAsync(id);
         if (book == null)

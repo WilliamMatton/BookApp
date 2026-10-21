@@ -1,4 +1,7 @@
-namespace Api.Models;
+using Api.Models;
+
+namespace Api.Entities;
+
 public class Book
 {
     public int Id { get; set; }
