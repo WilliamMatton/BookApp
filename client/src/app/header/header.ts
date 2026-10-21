@@ -45,14 +45,14 @@ import { Auth } from '../auth';
                 @if(auth.isAuthenticated()) {
                   <button
                     type="button"
-                    class="btn-link"
+                    class="btn btn-link"
                     (click)="logout()"
                   >
                     Log out
                   </button>
                 } @else {
                   <a
-                    class="btn-link"
+                    class="btn btn-link"
                     routerLink="/login"
                     (click)="isMenuCollapsed.set(true)"
                   >
