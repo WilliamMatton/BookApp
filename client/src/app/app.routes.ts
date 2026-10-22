@@ -4,8 +4,6 @@ import { Quotes } from './quotes/quotes';
 import { AddBook } from './add-book/add-book';
 import { UpdateBook } from './update-book/update-book';
 import { PageNotFound } from './page-not-found/page-not-found';
-import { Login } from './login/login';
-import { SignUp } from './sign-up/sign-up';
 import { AddQuote } from './add-quote/add-quote';
 import { UpdateQuote } from './update-quote/update-quote';
 
@@ -30,16 +28,7 @@ export const routes: Routes = [
     component: UpdateBook,
     title: 'Update Book',
   },
-  {
-    path: 'signup',
-    component: SignUp,
-    title: 'Sign Up',
-  },
-  {
-    path: 'login',
-    component: Login,
-    title: 'Sign In',
-  },
+  { path: '', loadChildren: () => import('./features/auth/auth.routes').then(m => m.authRoutes) },
   {
     path: 'quotes/add',
     component: AddQuote,
