@@ -1,0 +1,141 @@
+@use 'sass:map';
+
+@use './tokens' as *;
+
+@import 'bootstrap/scss/functions';
+
+$primary: $primary-light;
+$secondary: $text-muted-light;
+$success: $status-read-text-light;
+$warning: $status-reading-text-light;
+$danger: $danger-light;
+$info: $status-toread-text-light;
+
+$light: $page-light;
+$dark: $text-light;
+
+$body-bg: $page-light;
+$body-color: $text-light;
+$body-secondary-color: $text-muted-light;
+
+$border-color: $border-light;
+$border-color-translucent: rgba($text-light, 0.12);
+
+$link-color: $primary-light;
+$link-hover-color: $primary-hover-light;
+
+$input-bg: $surface-subtle-light;
+$input-disabled-bg: $surface-muted-light;
+$input-color: $text-light;
+$input-border-color: $border-light;
+$input-placeholder-color: $text-subtle-light;
+
+$form-select-bg: $surface-subtle-light;
+$form-select-color: $text-light;
+$form-select-border-color: $border-light;
+
+$modal-content-bg: $surface-light;
+$modal-content-color: $text-light;
+$modal-content-border-color: $border-light;
+$modal-header-border-color: $border-subtle-light;
+$modal-footer-border-color: $border-subtle-light;
+$modal-backdrop-bg: $primary-light;
+$modal-backdrop-opacity: 0.35;
+
+$nav-link-color: $text-muted-light;
+$nav-link-hover-color: $text-light;
+$nav-link-disabled-color: $text-subtle-light;
+$nav-pills-link-active-color: $text-light;
+$nav-pills-link-active-bg: $surface-muted-light;
+
+$card-bg: $surface-light;
+$card-color: $text-light;
+$card-border-color: $border-light;
+$card-cap-bg: $surface-subtle-light;
+$card-cap-color: $text-subtle-light;
+$card-border-radius: 0.7rem;
+
+$list-group-bg: $surface-light;
+$list-group-hover-bg: $surface-hover-light;
+$list-group-action-active-bg:$surface-hover-light;
+
+$font-family-sans-serif:
+  'DM Sans',
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  Roboto,
+  sans-serif;
+$headings-font-family: 'DM Serif Display', serif;
+
+@import 'bootstrap/scss/variables';
+
+$body-bg-dark: $page-dark;
+$body-color-dark: $text-dark;
+$body-secondary-color-dark: $text-muted-dark;
+
+$border-color-dark: $border-dark;
+$border-color-translucent-dark: rgba($text-dark, 0.12);
+
+$link-color-dark: $primary-dark;
+$link-hover-color-dark: $primary-hover-dark;
+
+@import 'bootstrap/scss/variables-dark';
+
+$custom-colors: (
+  'read': $status-read-text-light,
+  'read-bg': $status-read-bg-light,
+  'reading': $status-reading-text-light,
+  'reading-bg': $status-reading-bg-light,
+  'to-read': $status-toread-text-light,
+  'to-read-bg': $status-toread-bg-light,
+  'accent': $accent-light,
+);
+
+$theme-colors: map.merge($theme-colors, $custom-colors);
+
+$font-sizes: map.merge(
+  $font-sizes,
+  (
+    7: 0.875rem,
+    8: 0.75rem,
+    9: 0.6rem,
+    10: 0.5rem,
+  )
+);
+
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+$utilities: map.merge(
+  $utilities,
+  (
+    'letter-spacing': (
+      property: letter-spacing,
+      class: ls,
+      values: (
+        tight: -0.02em,
+        normal: normal,
+        wide: 0.07em,
+        wider: 0.13em,
+      ),
+    ),
+  )
+);
+
+@import 'bootstrap/scss/bootstrap';
+
+.btn {
+  --bs-btn-hover-bg: #{$primary-light};
+  --bs-btn-hover-color: #{$text-dark};
+}
+
+.btn-primary {
+  --bs-btn-hover-bg: #{$primary-hover-light};
+}
+
+.btn-light {
+  --bs-btn-hover-bg: #{$surface-light};
+  --bs-btn-hover-color: #{$text-light};
+}

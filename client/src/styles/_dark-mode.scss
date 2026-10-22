@@ -1,0 +1,90 @@
+@use './tokens' as *;
+
+@include color-mode(dark) {
+  --bs-primary: $primary-dark;
+  --bs-secondary: $text-muted-dark;
+  --bs-success: $status-read-text-dark;
+  --bs-warning: $status-reading-text-dark;
+  --bs-danger: $danger-dark;
+  --bs-info: $status-toread-text-dark;
+  --bs-light: $page-dark;
+  --bs-dark: $text-dark;
+
+  --bs-read-rgb: #{to-rgb($status-read-text-dark)};
+  --bs-read-bg-rgb: #{to-rgb($status-read-bg-dark)};
+
+  --bs-reading-rgb: #{to-rgb($status-reading-text-dark)};
+  --bs-reading-bg-rgb: #{to-rgb($status-reading-bg-dark)};
+
+  --bs-to-read-rgb: #{to-rgb($status-toread-text-dark)};
+  --bs-to-read-bg-rgb: #{to-rgb($status-toread-bg-dark)};
+
+  .btn-primary {
+    --bs-btn-hover-color: #{$text-light};
+  }
+
+  .btn {
+    --bs-btn-hover-bg: #{shade-color($primary-dark, 10%)};
+  }
+
+  .btn-light {
+    --bs-btn-hover-bg:#{$primary-dark};
+    --bs-btn-hover-color: #{$text-dark};
+  }
+
+  .btn-danger {
+    --bs-btn-hover-bg:#{$danger-bg-subtle-dark};
+  }
+
+  .form-control,
+  .form-select {
+    color: $text-dark;
+    background-color: $page-dark;
+    border-color: $border-dark;
+
+    &:focus {
+      color: $text-dark;
+      background-color: $surface-subtle-dark;
+      border-color: $focus-dark;
+      box-shadow: 0 0 0 0.25rem rgba($focus-dark, 0.2);
+    }
+  }
+
+  .modal {
+    --bs-modal-color: #{$text-dark};
+    --bs-modal-bg: #{$surface-dark};
+    --bs-modal-border-color: #{$border-dark};
+    --bs-modal-header-border-color: #{$border-subtle-dark};
+    --bs-modal-footer-border-color: #{$border-subtle-dark};
+  }
+
+  .modal-backdrop {
+    --bs-backdrop-bg: #090d0b;
+    --bs-backdrop-opacity: 0.7;
+  }
+
+  .nav {
+    --bs-nav-link-color: #{$text-muted-dark};
+    --bs-nav-link-hover-color: #{$text-dark};
+    --bs-nav-link-disabled-color: #{$text-subtle-dark};
+  }
+
+  .nav-pills {
+    --bs-nav-pills-link-active-color: #{$text-dark};
+    --bs-nav-pills-link-active-bg: #{$surface-muted-dark};
+  }
+
+  .card {
+    --bs-card-bg: #{$surface-subtle-dark};
+    --bs-card-color: #{$text-dark};
+    --bs-card-border-color: #{$border-dark};
+    --bs-card-cap-bg: #{$surface-subtle-dark};
+    --bs-card-cap-color: #{$text-subtle-dark};
+  }
+
+  .list-group {
+    --bs-list-group-bg: #{$surface-dark};
+    --bs-list-group-action-hover-bg: #{$surface-hover-dark};
+    --bs-list-group-action-active-bg: #{$surface-hover-dark};
+  }
+}
