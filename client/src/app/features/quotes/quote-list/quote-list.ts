@@ -4,7 +4,7 @@ import { I18nPluralPipe } from '@angular/common';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { catchError, map, of, startWith, Subject, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Library } from '../../../library';
+import { QuoteApi } from '../quoteApi';
 import { Quote } from '../quote';
 import { RouterLink } from '@angular/router';
 import { QuoteEntry } from '../quote-entry/quote-entry';
@@ -87,7 +87,7 @@ type QuoteListState =
   styleUrl: './quote-list.scss',
 })
 export class QuoteList {
-  libraryService = inject(Library);
+  quoteApi = inject(QuoteApi);
   alertMsg: string = '';
 
   private readonly refreshQuotes$ = new Subject<void>();
@@ -95,7 +95,7 @@ export class QuoteList {
   readonly quoteListState$ = this.refreshQuotes$.pipe(
     startWith(void 0),
     switchMap(() => 
-      this.libraryService.getAllQuotes().pipe(
+      this.quoteApi.getAllQuotes().pipe(
         map((quotes): QuoteListState => ({ status: 'loaded', quotes })),
         catchError((error: HttpErrorResponse) =>
           of<QuoteListState>({
@@ -121,7 +121,7 @@ export class QuoteList {
   deleteQuote(id: number): void {
     this.alertMsg = '';
 
-    this.libraryService.deleteQuote(id).subscribe({
+    this.quoteApi.deleteQuote(id).subscribe({
       next: () => this.refreshQuotes$.next(),
       error: (error: HttpErrorResponse) => {
         if(error.status === 0) {

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BookForm } from '../book-form/book-form';
-import { Library } from '../../../library';
+import { BookApi } from '../book-api';
 import { NewBook } from '../book';
 
 @Component({
@@ -31,14 +31,14 @@ import { NewBook } from '../book';
   styleUrl: './add-book.scss',
 })
 export class AddBook {
-  libraryService = inject(Library);
+  bookApi = inject(BookApi);
   router = inject(Router);
   errorMsg = '';
 
   onSubmit(newBook: NewBook): void {
     this.errorMsg = '';
 
-    this.libraryService.addBook({
+    this.bookApi.addBook({
       title: newBook.title,
       author: newBook.author,
       yearPublished: newBook.yearPublished,

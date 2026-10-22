@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { catchError, map, of, startWith } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Library } from '../../../library';
+import { BookApi } from '../book-api';
 import { BookForm } from '../book-form/book-form';
 import { Book, NewBook } from '../book';
 import { ContentError } from '../../../shared/content-error/content-error';
@@ -54,7 +54,7 @@ type BookState =
   styleUrl: './update-book.scss',
 })
 export class UpdateBook {
-  libraryService = inject(Library);
+  bookApi = inject(BookApi);
   router = inject(Router);
   route: ActivatedRoute = inject(ActivatedRoute);
   book!: Book;
@@ -62,7 +62,7 @@ export class UpdateBook {
 
   bookId = Number(this.route.snapshot.params['id']);
   
-  readonly bookState$ = this.libraryService.getBookById(this.bookId).pipe(
+  readonly bookState$ = this.bookApi.getBookById(this.bookId).pipe(
     map((book): BookState => ({ status: 'loaded', book })),
     catchError((error: HttpErrorResponse) =>
       of<BookState>({
@@ -79,7 +79,7 @@ export class UpdateBook {
   onSubmit(newBook: NewBook): void {
     this.errorMsg = '';
 
-    this.libraryService.updateBook(this.bookId, {
+    this.bookApi.updateBook(this.bookId, {
       title: newBook.title,
       author: newBook.author,
       yearPublished: newBook.yearPublished,

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Library } from '../../../library';
+import { QuoteApi } from '../quoteApi';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewQuote, Quote } from '../quote';
 import { catchError, map, of, startWith } from 'rxjs';
@@ -54,7 +54,7 @@ type QuoteState =
   styleUrl: './update-quote.scss',
 })
 export class UpdateQuote {
-  libraryService = inject(Library);
+  quoteApi = inject(QuoteApi);
   router = inject(Router);
   route: ActivatedRoute = inject(ActivatedRoute);
   quote!: Quote;
@@ -62,7 +62,7 @@ export class UpdateQuote {
 
   quoteId = Number(this.route.snapshot.params['id']);
   
-  readonly quoteState$ = this.libraryService.getQuoteById(this.quoteId).pipe(
+  readonly quoteState$ = this.quoteApi.getQuoteById(this.quoteId).pipe(
     map((quote): QuoteState => ({ status: 'loaded', quote: quote })),
     catchError((error: HttpErrorResponse) =>
       of<QuoteState>({
@@ -79,7 +79,7 @@ export class UpdateQuote {
   onSubmit(newQuote: NewQuote): void {
     this.errorMsg = '';
 
-    this.libraryService.updateQuote(this.quoteId, {
+    this.quoteApi.updateQuote(this.quoteId, {
       quoteText: newQuote.quoteText,
       source: newQuote.source,
     }).subscribe({

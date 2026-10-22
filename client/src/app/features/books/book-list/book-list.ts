@@ -3,7 +3,7 @@ import { I18nPluralPipe, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookEntry } from '../book-entry/book-entry';
-import { Library } from '../../../library';
+import { BookApi } from '../book-api';
 import { Book } from '../book';
 import { catchError, map, of, startWith, Subject, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -89,7 +89,7 @@ type BookListState =
   styleUrl: './book-list.scss',
 })
 export class BookList {
-  libraryService = inject(Library);
+  bookApi = inject(BookApi);
   alertMsg: string = '';
 
   private readonly refreshBooks$ = new Subject<void>();
@@ -97,7 +97,7 @@ export class BookList {
   readonly bookListState$ = this.refreshBooks$.pipe(
     startWith(void 0),
     switchMap(() => 
-      this.libraryService.getAllBooks().pipe(
+      this.bookApi.getAllBooks().pipe(
         map((books): BookListState => ({ status: 'loaded', books })),
         catchError((error: HttpErrorResponse) =>
           of<BookListState>({
@@ -123,7 +123,7 @@ export class BookList {
   deleteBook(id: number): void {
     this.alertMsg = '';
 
-    this.libraryService.deleteBook(id).subscribe({
+    this.bookApi.deleteBook(id).subscribe({
       next: () => this.refreshBooks$.next(),
       error: (error: HttpErrorResponse) => {
         if(error.status === 0) {

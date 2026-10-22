@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Library } from '../../../library';
+import { QuoteApi } from '../quoteApi';
 import { Router } from '@angular/router';
 import { NewQuote } from '../quote';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -31,14 +31,14 @@ import { QuoteForm } from '../quote-form/quote-form';
   styleUrl: './add-quote.scss',
 })
 export class AddQuote {
-  libraryService = inject(Library);
+  quoteApi = inject(QuoteApi);
   router = inject(Router);
   errorMsg = '';
 
   onSubmit(newQuote: NewQuote): void {
     this.errorMsg = '';
 
-    this.libraryService.addQuote({
+    this.quoteApi.addQuote({
       quoteText: newQuote.quoteText,
       source: newQuote.source
     }).subscribe({
