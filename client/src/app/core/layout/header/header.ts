@@ -42,7 +42,7 @@ type Theme = 'light' | 'dark';
                 >Quotes</a>
               </li>
             </ul>
-            <div class="row ms-1 ms-md-3">
+            <div class="row">
               <div class="col d-flex gap-2 align-items-center">
                 @if(auth.isAuthenticated()) {
                   <button
