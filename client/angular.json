@@ -35,6 +35,7 @@
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"],
               "sass": {
                 "silenceDeprecations": ["import", "global-builtin", "color-functions"]
               }
