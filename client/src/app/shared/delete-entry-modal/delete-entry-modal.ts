@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Book } from '../book';
+import { Book } from '../../book';
 
 @Component({
   selector: 'app-delete-book-modal',
