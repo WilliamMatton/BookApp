@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Auth } from '../core/auth/auth'; 
+import { Auth } from '../../auth/auth'; 
 
 type Theme = 'light' | 'dark';
 
