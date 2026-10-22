@@ -8,7 +8,7 @@ import { Library } from '../library';
 import { Quote } from '../quote';
 import { RouterLink } from '@angular/router';
 import { QuoteEntry } from '../quote-entry/quote-entry';
-import { ContentError } from '../content-error/content-error';
+import { ContentError } from '../shared/content-error/content-error';
 
 type QuoteListState =
     { status: 'loading' }

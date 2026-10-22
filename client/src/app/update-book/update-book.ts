@@ -6,7 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Library } from '../library';
 import { BookForm } from '../book-form/book-form';
 import { Book, NewBook } from '../book';
-import { ContentError } from '../content-error/content-error';
+import { ContentError } from '../shared/content-error/content-error';
 
 type BookState =
     { status: 'loading' }

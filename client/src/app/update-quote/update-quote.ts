@@ -6,7 +6,7 @@ import { catchError, map, of, startWith } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
 import { QuoteForm } from '../quote-form/quote-form';
-import { ContentError } from '../content-error/content-error';
+import { ContentError } from '../shared/content-error/content-error';
 
 type QuoteState =
     { status: 'loading' }

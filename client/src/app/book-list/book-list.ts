@@ -7,7 +7,7 @@ import { Library } from '../library';
 import { Book } from '../book';
 import { catchError, map, of, startWith, Subject, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ContentError } from '../content-error/content-error';
+import { ContentError } from '../shared/content-error/content-error'; 
 
 type BookListState =
     { status: 'loading' }
