@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Book } from '../../features/books/book'; 
 
 @Component({
-  selector: 'app-delete-book-modal',
+  selector: 'app-delete-entry-modal',
   imports: [],
   template: `
     <div class="modal-header border-0">
