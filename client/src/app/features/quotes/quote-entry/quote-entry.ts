@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Quote } from '../quote';
-import { DeleteEntryModal } from '../shared/delete-entry-modal/delete-entry-modal';
+import { DeleteEntryModal } from '../../../shared/delete-entry-modal/delete-entry-modal';
 
 @Component({
   selector: 'app-quote-entry',

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Library } from '../library';
+import { Library } from '../../../library';
 import { Router } from '@angular/router';
 import { NewQuote } from '../quote';
 import { HttpErrorResponse } from '@angular/common/http';
