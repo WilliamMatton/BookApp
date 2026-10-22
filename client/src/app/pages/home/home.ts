@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BookList } from '../features/books/book-list/book-list';
+import { BookList } from '../../features/books/book-list/book-list';
 import { RouterLink } from '@angular/router';
 
 @Component({
