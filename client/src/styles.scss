@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+@use 'sass:map';
+
+@use '@fontsource/dm-sans/400' as dm-sans-400;
+@use '@fontsource/dm-sans/500' as dm-sans-500;
+@use '@fontsource/dm-sans/600' as dm-sans-600;
+@use '@fontsource/dm-sans/700' as dm-sans-700;
+
+@use '@fontsource/dm-serif-display';
+
 $page-light: #f7f7f4;
 $surface-light: #ffffff;
 $surface-subtle-light: #fafaf8;
@@ -46,13 +55,6 @@ $status-reading-text-dark: #e4c57f;
 $status-toread-bg-dark: #30313f;
 $status-toread-text-dark: #bcbed8;
 $focus-dark: #9db7a5;
-
-@import '@fontsource/dm-sans/400.css';
-@import '@fontsource/dm-sans/500.css';
-@import '@fontsource/dm-sans/600.css';
-@import '@fontsource/dm-sans/700.css';
-
-@import '@fontsource/dm-serif-display';
 
 @import 'bootstrap/scss/functions';
 
@@ -144,9 +146,9 @@ $custom-colors: (
   'accent': $accent-light,
 );
 
-$theme-colors: map-merge($theme-colors, $custom-colors);
+$theme-colors: map.merge($theme-colors, $custom-colors);
 
-$font-sizes: map-merge(
+$font-sizes: map.merge(
   $font-sizes,
   (
     7: 0.875rem,
@@ -160,7 +162,7 @@ $font-sizes: map-merge(
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
 
-$utilities: map-merge(
+$utilities: map.merge(
   $utilities,
   (
     'letter-spacing': (
