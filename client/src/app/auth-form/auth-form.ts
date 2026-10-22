@@ -1,6 +1,6 @@
 import { Component, input, output, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { User } from '../user';
+import { User } from '../core/auth/user';
 import { RouterLink } from '@angular/router';
 import { FormError } from '../form-error/form-error';
 

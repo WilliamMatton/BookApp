@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthForm } from '../auth-form/auth-form';
-import { User } from '../user';
-import { Auth } from '../auth';
+import { User } from '../core/auth/user';
+import { Auth } from '../core/auth/auth';
 
 @Component({
   selector: 'app-sign-up',

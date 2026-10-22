@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User, TokenResponse } from './user';
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
 import { finalize, Observable } from 'rxjs';
 
 @Injectable({

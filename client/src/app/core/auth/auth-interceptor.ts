@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { Auth } from './auth';
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(Auth);
