@@ -7,10 +7,10 @@ import { Book } from '../book';
   imports: [],
   template: `
     <div class="modal-header border-0">
-      <span class="modal-title fw-bold fs-5">{{ title }}</span>
+      <span class="modal-title fw-bold fs-5 text-break">{{ title }}</span>
     </div>
     <div class="modal-body">
-      <p class="text-secondary">{{ body }}</p>
+      <p class="text-secondary text-break">{{ body }}</p>
     </div>
     <div class="modal-footer border-0">
       <button type="button" class="btn btn-light" (click)="activeModal.dismiss()">Cancel</button>
