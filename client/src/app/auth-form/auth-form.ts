@@ -2,7 +2,7 @@ import { Component, input, output, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../core/auth/user';
 import { RouterLink } from '@angular/router';
-import { FormError } from '../form-error/form-error';
+import { FormError } from '../shared/form-error/form-error';
 
 @Component({
   selector: 'app-auth-form',

@@ -2,7 +2,7 @@ import { Component, effect, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NewQuote, Quote } from '../quote';
-import { FormError } from '../form-error/form-error';
+import { FormError } from '../shared/form-error/form-error';
 
 @Component({
   selector: 'app-quote-form',
