@@ -2,7 +2,7 @@ import { Component, input, output, inject, effect } from '@angular/core';
 import { FormControl, FormBuilder, Validators, ReactiveFormsModule, ValidationErrors } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Book, NewBook, READING_STATUSES, ReadingStatus } from '../book';
-import { FormError } from '../shared/form-error/form-error';
+import { FormError } from '../../../shared/form-error/form-error'; 
 
 @Component({
   selector: 'app-book-form',

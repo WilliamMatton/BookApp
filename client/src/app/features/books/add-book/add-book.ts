@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BookForm } from '../book-form/book-form';
-import { Library } from '../library';
+import { Library } from '../../../library';
 import { NewBook } from '../book';
 
 @Component({

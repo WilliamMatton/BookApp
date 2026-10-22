@@ -3,10 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { catchError, map, of, startWith } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Library } from '../library';
+import { Library } from '../../../library';
 import { BookForm } from '../book-form/book-form';
 import { Book, NewBook } from '../book';
-import { ContentError } from '../shared/content-error/content-error';
+import { ContentError } from '../../../shared/content-error/content-error';
 
 type BookState =
     { status: 'loading' }

@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Book, NewBook } from './book';
+import { Book, NewBook } from './features/books/book';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 import { NewQuote, Quote } from './quote';

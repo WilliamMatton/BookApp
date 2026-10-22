@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
 import { Quotes } from './quotes/quotes';
-import { AddBook } from './add-book/add-book';
-import { UpdateBook } from './update-book/update-book';
 import { PageNotFound } from './page-not-found/page-not-found';
 import { AddQuote } from './add-quote/add-quote';
 import { UpdateQuote } from './update-quote/update-quote';
+import { bookRoutes } from './features/books/books.route';
 
 export const routes: Routes = [
   {
@@ -18,16 +17,7 @@ export const routes: Routes = [
     component: Quotes,
     title: 'Quotes',
   },
-  {
-    path: 'books/add',
-    component: AddBook,
-    title: 'Add Book',
-  },
-  {
-    path: 'books/update/:id',
-    component: UpdateBook,
-    title: 'Update Book',
-  },
+  { path: '', loadChildren: () => import('./features/books/books.route').then(m => bookRoutes) },
   { path: '', loadChildren: () => import('./features/auth/auth.routes').then(m => m.authRoutes) },
   {
     path: 'quotes/add',
