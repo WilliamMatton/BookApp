@@ -50,7 +50,7 @@ import { FormError } from '../form-error/form-error';
           />
           @if (author.touched) {
             <div class="text-danger">
-              @if (author.hasError('required') || title.hasError('pattern')) {
+              @if (author.hasError('required') || author.hasError('pattern')) {
                 <span>Please input the author.</span>
               }
               @if (author.hasError('maxlength')) {

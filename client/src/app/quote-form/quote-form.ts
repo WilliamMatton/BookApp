@@ -50,7 +50,7 @@ import { FormError } from '../form-error/form-error';
           />
           @if (source.touched) {
             <div class="text-danger">
-              @if (source.hasError('required') || quoteText.hasError('pattern')) {
+              @if (source.hasError('required') || source.hasError('pattern')) {
                 <span>Please input the quote source.</span>
               }
               @if(source.hasError('maxlength')) {
