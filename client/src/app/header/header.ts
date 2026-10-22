@@ -3,6 +3,8 @@ import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Auth } from '../auth';
 
+type Theme = 'light' | 'dark';
+
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, NgbCollapse],
@@ -97,8 +99,9 @@ export class Header {
   }
 
   toggleTheme() {
-    const nextState = !this.isDark();
-    this.isDark.set(nextState);
-    document.documentElement.setAttribute('data-bs-theme', nextState ? 'dark' : 'light');
+    this.isDark.set(!this.isDark());
+    document.documentElement.setAttribute('data-bs-theme', this.isDark() ? 'dark' : 'light');
+    const theme: Theme = this.isDark() ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
   }
 }
