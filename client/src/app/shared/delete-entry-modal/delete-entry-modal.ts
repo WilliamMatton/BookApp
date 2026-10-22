@@ -1,6 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Book } from '../../features/books/book'; 
 
 @Component({
   selector: 'app-delete-entry-modal',

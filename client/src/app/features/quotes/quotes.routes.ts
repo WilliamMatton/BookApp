@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { Quotes } from './quotes/quotes';
-import { AddQuote } from './add-quote/add-quote';
-import { UpdateQuote } from './update-quote/update-quote';
+import { Quotes } from '@/features/quotes/quotes/quotes';
+import { AddQuote } from '@/features/quotes/add-quote/add-quote';
+import { UpdateQuote } from '@/features/quotes/update-quote/update-quote';
 
 export const quoteRoutes: Routes = [
   { path: '', component: Quotes, title: 'Quotes', },

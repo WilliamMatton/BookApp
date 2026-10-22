@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AuthForm } from '../auth-form/auth-form';
-import { User } from '../../../core/auth/user';
-import { Auth } from '../../../core/auth/auth';
+import { AuthForm } from '@/features/auth/auth-form/auth-form';
+import { User } from '@/core/auth/user';
+import { Auth } from '@/core/auth/auth';
 
 @Component({
   selector: 'app-login',

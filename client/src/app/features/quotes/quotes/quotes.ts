@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { QuoteList } from '../quote-list/quote-list';
+import { QuoteList } from '@/features/quotes/quote-list/quote-list';
 
 @Component({
   selector: 'app-quotes',

@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { QuoteApi } from '../quoteApi';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NewQuote, Quote } from '../quote';
+import { NewQuote, Quote } from '@/features/quotes/quote';
 import { catchError, map, of, startWith } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
-import { QuoteForm } from '../quote-form/quote-form';
-import { ContentError } from '../../../shared/content-error/content-error';
+import { QuoteForm } from '@/features/quotes/quote-form/quote-form';
+import { ContentError } from '@/shared/content-error/content-error';
 
 type QuoteState =
     { status: 'loading' }

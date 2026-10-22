@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Book, ReadingStatus } from '../book';
-import { DeleteEntryModal } from '../../../shared/delete-entry-modal/delete-entry-modal'; 
+import { Book, ReadingStatus } from '@/features/books/book';
+import { DeleteEntryModal } from '@/shared/delete-entry-modal/delete-entry-modal'; 
 
 @Component({
   selector: 'app-book-entry',

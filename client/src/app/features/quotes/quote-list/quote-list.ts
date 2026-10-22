@@ -4,11 +4,11 @@ import { I18nPluralPipe } from '@angular/common';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { catchError, map, of, startWith, Subject, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { QuoteApi } from '../quoteApi';
-import { Quote } from '../quote';
+import { QuoteApi } from '@/features/quotes/quoteApi';
+import { Quote } from '@/features/quotes/quote';
 import { RouterLink } from '@angular/router';
-import { QuoteEntry } from '../quote-entry/quote-entry';
-import { ContentError } from '../../../shared/content-error/content-error';
+import { QuoteEntry } from '@/features/quotes/quote-entry/quote-entry';
+import { ContentError } from '@/shared/content-error/content-error';
 
 type QuoteListState =
     { status: 'loading' }

@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { QuoteApi } from '../quoteApi';
+import { QuoteApi } from '@/features/quotes/quoteApi';
 import { Router } from '@angular/router';
-import { NewQuote } from '../quote';
+import { NewQuote } from '@/features/quotes/quote';
 import { HttpErrorResponse } from '@angular/common/http';
-import { QuoteForm } from '../quote-form/quote-form';
+import { QuoteForm } from '@/features/quotes/quote-form/quote-form';
 
 @Component({
   selector: 'app-add-quote',

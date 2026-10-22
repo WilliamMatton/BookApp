@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { I18nPluralPipe, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { BookEntry } from '../book-entry/book-entry';
-import { BookApi } from '../book-api';
-import { Book } from '../book';
+import { BookEntry } from '@/features/books/book-entry/book-entry';
+import { BookApi } from '@/features/books/book-api';
+import { Book } from '@/features/books/book';
 import { catchError, map, of, startWith, Subject, switchMap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ContentError } from '../../../shared/content-error/content-error';
+import { ContentError } from '@/shared/content-error/content-error';
 
 type BookListState =
     { status: 'loading' }

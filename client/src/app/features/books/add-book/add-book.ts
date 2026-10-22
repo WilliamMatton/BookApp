@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { BookForm } from '../book-form/book-form';
-import { BookApi } from '../book-api';
-import { NewBook } from '../book';
+import { BookForm } from '@/features/books/book-form/book-form';
+import { BookApi } from '@/features/books/book-api';
+import { NewBook } from '@/features/books/book';
 
 @Component({
   selector: 'app-add-book',
