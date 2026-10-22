@@ -1,5 +1,5 @@
 import { Component, effect, inject, input, output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NewQuote, Quote } from '../quote';
 import { FormError } from '../form-error/form-error';
@@ -27,8 +27,11 @@ import { FormError } from '../form-error/form-error';
           />
           @if (quoteText.touched) {
             <div class="text-danger">
-              @if (quoteText.hasError('required')) {
+              @if (quoteText.hasError('required') || quoteText.hasError('pattern')) {
                 <span>Please input the quote.</span>
+              }
+              @if(quoteText.hasError('maxlength')) {
+                <span>Quote must not be longer than 500 characters.</span>
               }
             </div>
           }
@@ -47,8 +50,11 @@ import { FormError } from '../form-error/form-error';
           />
           @if (source.touched) {
             <div class="text-danger">
-              @if (source.hasError('required')) {
+              @if (source.hasError('required') || quoteText.hasError('pattern')) {
                 <span>Please input the quote source.</span>
+              }
+              @if(source.hasError('maxlength')) {
+                <span>Source must not be longer than 500 characters.</span>
               }
             </div>
           }
@@ -78,8 +84,22 @@ export class QuoteForm {
   submitted = output<NewQuote>();
 
   quoteForm = inject(FormBuilder).nonNullable.group({
-    quoteText: ['', Validators.required],
-    source: ['', Validators.required],
+    quoteText: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.pattern(/\S/),
+        Validators.maxLength(500),
+      ],
+    }),
+    source: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.pattern(/\S/),
+        Validators.maxLength(500),
+      ],
+    }),
   });
 
   constructor() {
@@ -95,7 +115,10 @@ export class QuoteForm {
 
     const { quoteText, source } = this.quoteForm.getRawValue();
     
-    if(this.quoteForm.valid) this.submitted.emit({ quoteText, source });
+    if(this.quoteForm.valid) this.submitted.emit({
+      quoteText: quoteText.trim(),
+      source: source.trim()
+    });
   }
 
   get quoteText() {

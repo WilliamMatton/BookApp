@@ -10,20 +10,20 @@ import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
   template: `
     <div class="row row-gap-3 pt-3 pb-3 p-lg-3">
       <div class="col-12 col-sm-6 col-md-8 d-flex align-items-center column-gap-2 column-gap-lg-3">
-        <span class="fs-5 bg-success bg-gradient text-light pt-2 pb-2 ps-1 pe-1 rounded-3 shadow">
+        <span class="fs-5 bg-success bg-gradient text-light pt-2 pb-2 ps-1 pe-1 rounded-3 shadow d-none d-sm-block">
           <i class="fa-solid fa-quote-left align-middle"></i>
           <i class="fa-solid fa-quote-right align-middle"></i>
         </span>
         <div class="d-flex flex-column">
-          <p class="text-secondary fs-7 p-0 m-0">{{quote.quoteText}}</p>
+          <p class="text-secondary fs-7 p-0 m-0 text-break">{{quote.quoteText}}</p>
         </div>
       </div>
       <div class="col-12 col-sm-3 col-md-2 d-flex align-items-center justify-content-sm-center">
-        <span class="fs-7 text-secondary">{{quote.source}}</span>
+        <span class="fs-7 text-secondary text-break">{{quote.source}}</span>
       </div>
       <div class="col-12 col-sm-3 col-md-2 col-lg-2 d-flex align-items-center justify-content-sm-center gap-2">
         <a
-          class="btn border rounded-3 fs-7 opacity-75"
+          class="btn border rounded-3 fs-7"
           [routerLink]="['/quotes/update', quote.id]"
           aria-label="Edit quote"
         >
@@ -31,7 +31,7 @@ import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
         </a>
         <button
           type="button"
-          class="btn border rounded-3 fs-7 opacity-75"
+          class="btn border rounded-3 fs-7"
           aria-label="Delete quote"
           (click)="openModal()"
         >

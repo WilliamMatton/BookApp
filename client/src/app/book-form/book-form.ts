@@ -1,5 +1,5 @@
 import { Component, input, output, inject, effect } from '@angular/core';
-import { FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormBuilder, Validators, ReactiveFormsModule, ValidationErrors } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Book, NewBook, READING_STATUSES, ReadingStatus } from '../book';
 import { FormError } from '../form-error/form-error';
@@ -27,8 +27,11 @@ import { FormError } from '../form-error/form-error';
           />
           @if (title.touched) {
             <div class="text-danger">
-              @if (title.hasError('required')) {
+              @if (title.hasError('required') || title.hasError('pattern')) {
                 <span>Please input the title.</span>
+              }
+              @if (title.hasError('maxlength')) {
+                <span>Title must not be longer than 200 characters.</span>
               }
             </div>
           }
@@ -47,8 +50,11 @@ import { FormError } from '../form-error/form-error';
           />
           @if (author.touched) {
             <div class="text-danger">
-              @if (author.hasError('required')) {
+              @if (author.hasError('required') || title.hasError('pattern')) {
                 <span>Please input the author.</span>
+              }
+              @if (author.hasError('maxlength')) {
+                <span>Author name must not be longer than 200 characters.</span>
               }
             </div>
           }
@@ -111,8 +117,22 @@ export class BookForm {
   submitted = output<NewBook>();
 
   bookForm = inject(FormBuilder).nonNullable.group({
-    title: ['', Validators.required],
-    author: ['', Validators.required],
+    title: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.pattern(/\S/),
+        Validators.maxLength(200),
+      ],
+    }),
+    author: new FormControl('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.pattern(/\S/),
+        Validators.maxLength(200),
+      ],
+    }),
     yearPublished: new FormControl<number | null>(null, {
       validators: [
         Validators.required,
@@ -140,7 +160,12 @@ export class BookForm {
     const { title, author, yearPublished, status } = this.bookForm.getRawValue();
     if(yearPublished === null) return;
 
-    if(this.bookForm.valid) this.submitted.emit({ title, author, yearPublished, status });
+    if(this.bookForm.valid) this.submitted.emit({
+      title: title.trim(),
+      author: author.trim(),
+      yearPublished,
+      status
+    });
   }
 
   get title() {
