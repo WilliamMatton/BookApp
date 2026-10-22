@@ -10,14 +10,14 @@ import { DeleteEntryModal } from '../delete-entry-modal/delete-entry-modal';
   imports: [NgClass, RouterLink],
   template: `
     <div class="row row-gap-3 pt-3 pb-3 p-lg-3">
-      <div class="col-12 col-sm-6 col-md-6 col-lg-8 col-xl-8 d-flex align-items-center column-gap-2 column-gap-lg-3">
+      <div class="col-12 col-sm-5 col-md-6 col-lg-7 d-flex align-items-center column-gap-2 column-gap-lg-3">
         <span class="fs-5 bg-danger bg-gradient text-light pt-4 pb-4 ps-3 pe-3 rounded-3 shadow d-none d-sm-block"><i class="fa-solid fa-book align-middle"></i></span>
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column overflow-hidden">
           <p class="fw-semibold p-0 m-0 text-break">{{book.title}}</p>
           <p class="text-secondary fs-7 p-0 m-0">{{book.author}}</p>
         </div>
       </div>
-      <div class="col-12 col-sm-2 col-md-2 col-lg-1 d-flex align-items-center justify-content-sm-center">
+      <div class="col-12 col-sm-3 col-md-2 col-lg-2 d-flex align-items-center justify-content-sm-center">
         <span class="fs-7 fw-medium ps-2 pe-2 rounded-pill"
           [ngClass]="statusClasses[book.status]"
         >

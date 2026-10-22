@@ -44,10 +44,10 @@ type BookListState =
           @if(state.books.length > 0) {
             <div class="card p-0 overflow-hidden">
               <div class="card-header p-2 ps-lg-3 pe-lg-3 d-none d-sm-flex align-items-center">
-                <div class="col-6 col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                <div class="col-6 col-sm-5 col-md-6 col-lg-7">
                   <span class="text-secondary fs-8 fw-semibold text-uppercase ls-wide">Book</span>
                 </div>
-                <div class="col-6 col-sm-2 col-md-2 col-lg-1 col-xl-1 d-flex justify-content-center">
+                <div class="col-6 col-sm-3 col-md-2 col-lg-2 d-flex justify-content-center">
                   <span class="text-secondary fs-8 fw-semibold text-uppercase ls-wide">Status</span>
                 </div>
                 <div class="col-6 col-sm-2 col-md-2 col-lg-1 col-xl-1 d-flex justify-content-center">
