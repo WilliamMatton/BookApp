@@ -28,7 +28,7 @@ type BookState =
           <div class="container p-0 mt-5">
             <div class="row">
               <span class="text-reading fw-semibold fs-8 text-uppercase ls-wider">Edit entry</span>
-              <h1>Edit "{{ state.book.title }}"</h1>
+              <h1 class="text-truncate">Edit "{{ state.book.title }}"</h1>
             </div>
             <div class="row">
               <div class="col">
